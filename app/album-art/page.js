@@ -12,26 +12,29 @@ export default function AlbumArtPage() {
   return (
     <>
       {/* Hero: "Album" top-left, 4 phone tiles, "Art" bottom-right (overlapping, like the original) */}
-      <section className="relative mx-auto max-w-[1126px] px-4 pt-6 pb-16 sm:px-6 sm:pt-10 sm:pb-24">
-        <Reveal as="h1" className="relative z-10 font-display text-[clamp(2.5rem,13vw,176px)] leading-[0.85]">
+      <section className="relative mx-auto max-w-[1126px] px-6 pt-10 pb-24">
+        <Reveal as="h1" className="relative z-10 font-display text-[clamp(3.5rem,13vw,176px)] leading-[0.85]">
           {albumArt.titleTop}
         </Reveal>
-        <div className="relative z-0 -mt-3 grid grid-cols-2 gap-3 sm:-mt-4 sm:gap-5 md:-mt-6 md:grid-cols-4">
+        <div className="relative z-0 -mt-4 grid grid-cols-2 gap-5 md:-mt-6 md:grid-cols-4">
           {albumArt.phones.map((p, i) => (
-            <Reveal key={i} delay={i * 100} className="relative overflow-hidden rounded-[18px] sm:rounded-[28px]" style={{ aspectRatio: "267 / 443" }}>
+            <Reveal key={i} delay={i * 100} className="relative overflow-hidden rounded-[28px]" style={{ aspectRatio: "267 / 443" }}>
               {p.type === "video" ? (
                 <VideoPlayer ambient src={p.src} poster={p.poster} title="Album art animation" />
-              ) : !p.src ? (<Placeholder label="Artwork" />) : (<Image src={p.src} alt="Album art on phone" fill sizes="(min-width: 768px) 25vw, 50vw" className="object-cover" />
+              ) : !p.src ? (
+                <Placeholder label="Artwork" />
+              ) : (
+                <Image src={p.src} alt="Album art on phone" fill sizes="(min-width: 768px) 25vw, 50vw" className="object-cover" />
               )}
             </Reveal>
           ))}
         </div>
-        <Reveal className="relative z-10 -mt-7 text-right font-display text-[clamp(2.5rem,13vw,176px)] leading-[0.85] sm:-mt-10 md:-mt-16" aria-hidden="true">
+        <Reveal className="relative z-10 -mt-10 text-right font-display text-[clamp(3.5rem,13vw,176px)] leading-[0.85] md:-mt-16" aria-hidden="true">
           {albumArt.titleBottom}
         </Reveal>
       </section>
 
-      <section className="mx-auto max-w-[980px] px-4 pb-16 sm:px-6">
+      <section className="mx-auto max-w-[980px] px-6 pb-16">
         <ProGallery items={galleries.albumArt} layout="grid" columns={4} gap={16} ratio="1 / 1" />
       </section>
     </>

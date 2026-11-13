@@ -1,53 +1,80 @@
-import PortfolioExplorer from "@/components/PortfolioExplorer";
+import Image from "next/image";
+import Placeholder from "@/components/Placeholder";
+import ProGallery from "@/components/ProGallery";
+import Reveal from "@/components/Reveal";
+import ThumbnailGallery from "@/components/ThumbnailGallery";
 import VideoPlayer from "@/components/VideoPlayer";
-import { portfolioCategories, portfolioProjects } from "@/data/portfolio";
+import WebDevelopmentPortfolio from "@/components/WebDevelopmentPortfolio";
+import galleries from "@/data/galleries";
 import { projects } from "@/data/site";
 
-export const metadata = {
-  title: "Portfolio | Visual Art, Motion Design, Website Design & Development",
-};
+export const metadata = { title: "Projects" };
+
+function ProjectVideo({ video, title }) {
+  return (
+    <div className="mx-auto mt-6 max-w-[980px]">
+      <VideoPlayer src={video.src} poster={video.poster} title={title} aspect="16 / 9" />
+    </div>
+  );
+}
 
 export default function ProjectsPage() {
   return (
     <>
-      {/* Editorial Header — SSR visible immediately for fast FCP/LCP */}
-      <header className="relative mx-auto max-w-[1440px] px-4 pt-6 pb-8 sm:px-6 sm:pt-8 sm:pb-12 md:px-12 md:pt-12">
-        <div className="grid grid-cols-1 items-end gap-6 sm:gap-8 lg:grid-cols-12">
-          <div className="min-w-0 lg:col-span-8">
-            <p className="font-display text-xs tracking-[0.22em] text-accent uppercase sm:tracking-[0.26em]">
-              Visual Artist · Motion Designer · Website Designer &amp; Developer
-            </p>
-            <h1 className="mt-3 font-display text-[clamp(2rem,6.8vw,92px)] leading-[0.94] tracking-[-0.045em] uppercase sm:leading-[0.92]">
-              {projects.title}
-            </h1>
-            <p className="mt-4 max-w-[680px] text-sm leading-relaxed text-muted sm:mt-5 sm:text-base md:text-lg">
-              {projects.intro}
-            </p>
-          </div>
-
-          <div className="min-w-0 lg:col-span-4">
-            <div className="overflow-hidden rounded-[16px] bg-neutral-950 ring-1 ring-white/12 sm:rounded-[18px]">
-              <VideoPlayer
-                ambient
-                priority
-                sizes="(min-width: 1024px) 32vw, 100vw"
-                src={projects.headerVideo}
-                poster={projects.headerImage}
-                title="Motion Showreel Preview"
-                aspect="16 / 9"
-              />
-            </div>
-          </div>
+      {/* Header banner with title + intro overlaid */}
+      <header className="relative -mt-28 flex min-h-[583px] flex-col items-center justify-center overflow-hidden px-6 pt-28 text-center">
+        {projects.headerImage ? <Image src={projects.headerImage} alt="" fill priority sizes="100vw" className="object-cover" /> : <Placeholder label="" />}
+        <div className="absolute inset-0 bg-black/40" />
+        <div className="relative">
+          <Reveal as="h1" className="font-display text-page-title" style={{ letterSpacing: "-0.06em" }}>
+            {projects.title}
+          </Reveal>
+          <Reveal delay={150} className="mx-auto mt-10 max-w-[822px] text-lg leading-[1.4] md:text-xl">
+            <p>{projects.intro}</p>
+          </Reveal>
         </div>
       </header>
+      <div className="mt-8 flex justify-center">
+        <svg viewBox="0 0 40 21" className="animate-nudge h-[21px] w-10" aria-hidden="true">
+          <path d="M2 2l18 17L38 2" fill="none" stroke="currentColor" strokeWidth="2.5" />
+        </svg>
+      </div>
 
-      {/* Categorized Portfolio Explorer */}
-      <section className="mx-auto max-w-[1440px] px-4 pt-2 pb-20 sm:px-6 sm:pt-4 sm:pb-24 md:px-12">
-        <PortfolioExplorer
-          categories={portfolioCategories}
-          projects={portfolioProjects}
-          syncUrl
-        />
+      <div className="mx-auto max-w-[980px] space-y-28 px-6 pt-24 pb-20">
+        {projects.items.map((p) => {
+          const items = galleries[p.gallery];
+          return (
+            <section key={p.title}>
+              <Reveal className="text-center">
+                <h2 className="font-display text-2xl leading-tight md:text-[40px]">{p.title}</h2>
+                {p.subtitle && <p className="mt-4 font-display text-lg md:text-[22px]">{p.subtitle}</p>}
+              </Reveal>
+              <Reveal className="mx-auto mt-10 max-w-[843px] space-y-5 text-center text-lg leading-[1.4]">
+                {p.body.map((para, i) => (
+                  <p key={i}>{para}</p>
+                ))}
+              </Reveal>
+
+              <div className="mt-12">
+                {p.video && p.videoPosition === "before" && <ProjectVideo video={p.video} title={p.title} />}
+                {items &&
+                  (p.galleryStyle === "row" ? (
+                    <div className="mt-6">
+                      <ProGallery items={items} layout="row" gap={12} />
+                    </div>
+                  ) : (
+                    <ThumbnailGallery items={items} ratio={items[0]?.w && items[0]?.h && items[0].h > items[0].w ? "4 / 5" : "16 / 9"} className="mt-6" />
+                  ))}
+                {p.video && p.videoPosition === "after" && <ProjectVideo video={p.video} title={p.title} />}
+              </div>
+            </section>
+          );
+        })}
+      </div>
+
+      {/* Separate Website Design & Development Portfolio immediately below */}
+      <section className="mx-auto max-w-[1611px] border-t border-line px-6 pt-24 pb-20 md:px-10">
+        <WebDevelopmentPortfolio showHeading />
       </section>
     </>
   );

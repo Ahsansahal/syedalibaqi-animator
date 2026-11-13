@@ -1,49 +1,33 @@
-import Link from "next/link";
 import ProGallery from "@/components/ProGallery";
 import Reveal from "@/components/Reveal";
+import WebDevelopmentPortfolio from "@/components/WebDevelopmentPortfolio";
 import galleries from "@/data/galleries";
 import { work } from "@/data/site";
 
-export const metadata = { title: "Motion Design & Animation" };
+export const metadata = { title: "Animation and Motion Graphics" };
 
 export default function WorkPage() {
   return (
     <>
-      <section className="mx-auto max-w-[980px] px-4 pt-10 pb-12 text-center sm:px-6 sm:pt-16 sm:pb-16">
-        <Reveal className="font-display text-xs tracking-[0.22em] text-accent uppercase sm:tracking-[0.28em]">
-          Motion Graphics · Showreels · Commercials
-        </Reveal>
-        <Reveal as="h1" delay={70} className="mt-4 font-display text-page-title">
+      <section className="mx-auto max-w-[980px] px-6 pt-16 pb-20 text-center">
+        <Reveal as="h1" className="font-display text-page-title">
           {work.title.map((l) => (
             <span key={l} className="block">
               {l}
             </span>
           ))}
         </Reveal>
-        <Reveal
-          delay={140}
-          className="mx-auto mt-6 max-w-[792px] text-base leading-relaxed text-muted sm:mt-10 sm:text-lg md:text-xl"
-        >
+        <Reveal delay={150} className="mx-auto mt-12 max-w-[792px] text-lg leading-[1.4] md:text-xl">
           <p>{work.intro}</p>
         </Reveal>
-        <Reveal delay={200} className="mt-7 sm:mt-8">
-          <Link
-            href="/projects?category=motion-animation"
-            className="inline-flex min-h-[44px] items-center justify-center rounded-full border border-line bg-neutral-950 px-6 py-3 font-display text-xs tracking-[0.14em] text-paper uppercase transition-colors hover:border-accent hover:text-accent sm:tracking-[0.16em]"
-          >
-            Explore Categorized Portfolio →
-          </Link>
-        </Reveal>
+      </section>
+      <section className="mx-auto max-w-[1494px] px-4 pb-16 md:px-10">
+        <ProGallery items={galleries.animationWork} layout="stack" columns={1} gap={0} showInfo="none" />
       </section>
 
-      <section className="mx-auto max-w-[1320px] px-4 pb-16 sm:pb-20 md:px-10">
-        <ProGallery
-          items={galleries.animationWork}
-          layout="stack"
-          columns={1}
-          gap={48}
-          showInfo="below"
-        />
+      {/* Separate Website Design & Development Portfolio immediately below */}
+      <section className="mx-auto max-w-[1611px] border-t border-line px-4 pt-24 pb-20 md:px-10">
+        <WebDevelopmentPortfolio showHeading />
       </section>
     </>
   );
