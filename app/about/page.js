@@ -14,19 +14,16 @@ export default function AboutPage() {
   return (
     <>
       {/* Editorial Profile Hero */}
-      <section className="mx-auto max-w-[1440px] px-6 pt-10 md:px-12">
-        <p className="font-display text-xs tracking-[0.26em] text-accent uppercase">
+      <section className="mx-auto max-w-[1440px] px-4 pt-6 sm:px-6 sm:pt-10 md:px-12">
+        <p className="font-display text-xs tracking-[0.22em] text-accent uppercase sm:tracking-[0.26em]">
           {about.eyebrow}
         </p>
-        <h1 className="mt-4 max-w-[1080px] font-display text-[clamp(2.2rem,5.6vw,76px)] leading-[0.96] tracking-[-0.04em]">
+        <h1 className="mt-3 max-w-[1080px] font-display text-[clamp(1.85rem,5.6vw,76px)] leading-[0.98] tracking-[-0.04em] sm:mt-4 sm:leading-[0.96]">
           {about.headline}
         </h1>
 
-        <div className="mt-10 grid grid-cols-1 gap-10 border-t border-white/12 pt-10 lg:grid-cols-12">
-          <Reveal
-            delay={130}
-            className="space-y-5 text-lg leading-relaxed text-muted md:text-xl lg:col-span-8"
-          >
+        <div className="mt-8 grid grid-cols-1 gap-8 border-t border-white/12 pt-8 sm:mt-10 sm:gap-10 sm:pt-10 lg:grid-cols-12">
+          <div className="min-w-0 space-y-5 text-base leading-relaxed text-muted sm:text-lg md:text-xl lg:col-span-8">
             {about.bio.map((paragraph, idx) => (
               <p key={idx}>{paragraph}</p>
             ))}
@@ -80,12 +77,9 @@ export default function AboutPage() {
                 ))}
               </div>
             </div>
-          </Reveal>
+          </div>
 
-          <Reveal
-            delay={190}
-            className="flex flex-col justify-between rounded-[22px] bg-neutral-950/90 p-7 ring-1 ring-white/12 lg:col-span-4"
-          >
+          <div className="flex min-w-0 flex-col justify-between rounded-[20px] bg-neutral-950/90 p-6 ring-1 ring-white/12 sm:rounded-[22px] sm:p-7 lg:col-span-4">
             <div>
               <p className="font-display text-xs tracking-[0.2em] text-accent uppercase">
                 Direct Contact
@@ -110,18 +104,18 @@ export default function AboutPage() {
             <div className="mt-8 flex flex-wrap gap-3 border-t border-white/10 pt-5">
               <Link
                 href="/projects"
-                className="inline-flex items-center justify-center rounded-full bg-accent px-5 py-2.5 font-display text-xs tracking-[0.14em] text-ink uppercase transition-colors hover:bg-paper"
+                className="inline-flex min-h-[44px] items-center justify-center rounded-full bg-accent px-5 py-2.5 font-display text-xs tracking-[0.14em] text-ink uppercase transition-colors hover:bg-paper"
               >
                 Explore Work →
               </Link>
               <Link
                 href="/contact"
-                className="inline-flex items-center justify-center rounded-full border border-white/25 px-5 py-2.5 font-display text-xs tracking-[0.14em] text-paper uppercase transition-colors hover:border-accent hover:text-accent"
+                className="inline-flex min-h-[44px] items-center justify-center rounded-full border border-white/25 px-5 py-2.5 font-display text-xs tracking-[0.14em] text-paper uppercase transition-colors hover:border-accent hover:text-accent"
               >
                 Let&apos;s Talk
               </Link>
             </div>
-          </Reveal>
+          </div>
         </div>
       </section>
 
@@ -129,17 +123,17 @@ export default function AboutPage() {
       <SkillsShowcase data={skillsHierarchy} />
 
       {/* Workflow */}
-      <section className="mx-auto mt-28 max-w-[1440px] px-6 md:px-12">
+      <section className="mx-auto mt-20 max-w-[1440px] px-4 sm:mt-28 sm:px-6 md:px-12">
         <Reveal className="max-w-[680px]">
           <p className="font-display text-xs tracking-[0.26em] text-accent uppercase">
             Workflow
           </p>
-          <h2 className="mt-3 font-display text-3xl tracking-[-0.03em] md:text-4xl">
+          <h2 className="mt-3 font-display text-2xl tracking-[-0.03em] sm:text-3xl md:text-4xl">
             From Visual Concept to Motion &amp; Live Web Build
           </h2>
         </Reveal>
 
-        <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-8 grid grid-cols-1 gap-5 sm:mt-10 sm:grid-cols-2 sm:gap-6 lg:grid-cols-4">
           {workflow.map((w, idx) => (
             <Reveal
               key={w.step}
@@ -155,10 +149,10 @@ export default function AboutPage() {
       </section>
 
       {/* Quote */}
-      <section className="mx-auto mt-28 max-w-[1160px] px-6 text-center md:px-12">
+      <section className="mx-auto mt-20 max-w-[1160px] px-4 text-center sm:mt-28 sm:px-6 md:px-12">
         <Reveal
           as="blockquote"
-          className="font-display text-[clamp(1.7rem,4.2vw,50px)] leading-[1.1] tracking-[-0.03em]"
+          className="font-display text-[clamp(1.4rem,4.2vw,50px)] leading-[1.15] tracking-[-0.03em] sm:leading-[1.1]"
         >
           {about.quote}
         </Reveal>
@@ -168,11 +162,11 @@ export default function AboutPage() {
       </section>
 
       {/* Featured Reel */}
-      <section className="mx-auto mt-24 max-w-[1240px] px-6 text-center md:px-12">
-        <Reveal as="h2" className="font-display text-2xl md:text-4xl">
+      <section className="mx-auto mt-16 max-w-[1240px] px-4 text-center sm:mt-24 sm:px-6 md:px-12">
+        <Reveal as="h2" className="font-display text-xl sm:text-2xl md:text-4xl">
           {about.reelHeading}
         </Reveal>
-        <Reveal className="mt-8 overflow-hidden rounded-[22px] ring-1 ring-white/12">
+        <Reveal className="mt-6 overflow-hidden rounded-[18px] ring-1 ring-white/12 sm:mt-8 sm:rounded-[22px]">
           <VideoPlayer
             src={about.storyVideo.src}
             poster={about.storyVideo.poster}

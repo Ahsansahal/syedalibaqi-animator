@@ -19,7 +19,7 @@ export default function Reveal({
 
     const rect = el.getBoundingClientRect();
     if (rect.top < window.innerHeight * 0.95) {
-      el.classList.add("is-visible");
+      el.classList.add("is-instant", "is-visible");
       return;
     }
 

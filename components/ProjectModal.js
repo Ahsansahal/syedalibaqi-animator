@@ -64,19 +64,19 @@ export default function ProjectModal({ project, onClose }) {
       role="dialog"
       aria-modal="true"
       aria-label={project.title}
-      className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 p-3 backdrop-blur-md md:p-6"
+      className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 p-2.5 backdrop-blur-md sm:p-4 md:p-6"
       onClick={onClose}
     >
       <div
         ref={dialogRef}
-        className="relative flex max-h-[94vh] w-full max-w-[1340px] flex-col overflow-hidden rounded-[22px] bg-neutral-950 shadow-2xl ring-1 ring-white/15"
+        className="relative flex max-h-[92dvh] w-full max-w-[1340px] flex-col overflow-hidden rounded-[18px] bg-neutral-950 shadow-2xl ring-1 ring-white/15 sm:rounded-[22px]"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Top Modal Bar */}
-        <div className="flex items-center justify-between gap-4 border-b border-white/10 bg-ink/95 px-5 py-4 md:px-8">
+        <div className="flex items-center justify-between gap-3 border-b border-white/10 bg-ink/95 px-4 py-3.5 sm:gap-4 sm:px-5 sm:py-4 md:px-8">
           <div className="min-w-0">
-            <div className="flex flex-wrap items-center gap-3">
-              <span className="font-display text-[11px] tracking-[0.2em] text-accent uppercase">
+            <div className="flex flex-wrap items-center gap-2.5 sm:gap-3">
+              <span className="font-display text-[10px] tracking-[0.18em] text-accent uppercase sm:text-[11px] sm:tracking-[0.2em]">
                 {project.categoryLabel}
               </span>
               {media.length > 0 && (
@@ -85,7 +85,7 @@ export default function ProjectModal({ project, onClose }) {
                 </span>
               )}
             </div>
-            <h2 className="mt-1 truncate font-display text-lg tracking-[-0.02em] md:text-2xl">
+            <h2 className="mt-1 line-clamp-2 font-display text-base leading-snug tracking-[-0.02em] sm:truncate sm:text-lg md:text-2xl">
               {project.title}
             </h2>
           </div>
@@ -94,7 +94,7 @@ export default function ProjectModal({ project, onClose }) {
             type="button"
             onClick={onClose}
             aria-label="Close project details"
-            className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white/[0.06] text-2xl leading-none text-paper ring-1 ring-white/15 transition-colors hover:bg-accent hover:text-ink"
+            className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-white/[0.06] text-2xl leading-none text-paper ring-1 ring-white/15 transition-colors hover:bg-accent hover:text-ink"
           >
             ×
           </button>
@@ -103,8 +103,8 @@ export default function ProjectModal({ project, onClose }) {
         {/* Scrollable Content Grid */}
         <div className="grid min-h-0 flex-1 grid-cols-1 overflow-y-auto lg:grid-cols-12">
           {/* Left / Main Media Viewer */}
-          <div className="flex flex-col justify-between border-b border-white/10 bg-black p-4 md:p-6 lg:col-span-8 lg:border-r lg:border-b-0">
-            <div className="relative flex min-h-[280px] flex-1 items-center justify-center overflow-hidden rounded-[14px] bg-neutral-950 md:min-h-[460px]">
+          <div className="flex flex-col justify-between border-b border-white/10 bg-black p-3 sm:p-4 md:p-6 lg:col-span-8 lg:border-r lg:border-b-0">
+            <div className="relative flex min-h-[220px] flex-1 items-center justify-center overflow-hidden rounded-[12px] bg-neutral-950 sm:min-h-[280px] sm:rounded-[14px] md:min-h-[440px]">
               {activeItem ? (
                 activeItem.type === "video" ? (
                   <div className="w-full">
@@ -119,11 +119,11 @@ export default function ProjectModal({ project, onClose }) {
                           : "16 / 9"
                       }
                       fit="contain"
-                      className="max-h-[62vh]"
+                      className="max-h-[52dvh] sm:max-h-[62dvh]"
                     />
                   </div>
                 ) : (
-                  <div className="relative h-[46vh] w-full md:h-[58vh]">
+                  <div className="relative h-[34dvh] min-h-[220px] w-full sm:h-[44dvh] md:h-[56dvh]">
                     <Image
                       key={activeItem.src}
                       src={activeItem.src}

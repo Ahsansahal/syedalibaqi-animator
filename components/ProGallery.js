@@ -35,10 +35,11 @@ export default function ProGallery({
   const gridCols = {
     1: "grid-cols-1",
     2: "grid-cols-1 sm:grid-cols-2",
-    3: "grid-cols-1 sm:grid-cols-3",
-    4: "grid-cols-2 lg:grid-cols-4",
+    3: "grid-cols-1 sm:grid-cols-2 md:grid-cols-3",
+    4: "grid-cols-2 md:grid-cols-4",
     5: "grid-cols-2 sm:grid-cols-3 lg:grid-cols-5",
   }[columns];
+  const fluidGap = gap > 20 ? `clamp(14px, 3vw, ${gap}px)` : `${gap}px`;
 
   const renderItem = (item, i, extra = {}) => {
     const aspect = extra.aspect ?? (item.w && item.h ? `${item.w} / ${item.h}` : "1 / 1");
@@ -56,7 +57,7 @@ export default function ProGallery({
             alt={item.title || item.description || ""}
             fill
             unoptimized={item.src.endsWith(".gif")}
-            sizes={extra.sizes ?? `(min-width: 1024px) ${Math.round(100 / columns)}vw, 100vw`}
+            sizes={extra.sizes ?? `(min-width: 1024px) ${Math.round(100 / columns)}vw, (min-width: 640px) 50vw, 100vw`}
             className={`${extra.fit === "contain" ? "object-contain" : "object-cover"} transition-transform duration-700 group-hover:scale-[1.04]`}
           />
         </div>
@@ -64,7 +65,7 @@ export default function ProGallery({
     const hasInfo = showInfo !== "none" && (item.title || item.description);
     const Wrapper = lightbox ? "button" : "div";
     return (
-      <figure key={i} className={`group relative block w-full break-inside-avoid ${extra.className ?? ""}`} style={{ marginBottom: layout === "masonry" ? gap : 0 }}>
+      <figure key={i} className={`group relative block w-full break-inside-avoid ${extra.className ?? ""}`} style={{ marginBottom: layout === "masonry" ? fluidGap : 0 }}>
         <Wrapper
           {...(lightbox ? { type: "button", onClick: () => setActive(i), "aria-label": `Open ${item.title || "item"} ${i + 1}` } : {})}
           className="relative block w-full overflow-hidden text-left focus-visible:outline-2 focus-visible:outline-accent"
@@ -72,9 +73,9 @@ export default function ProGallery({
         >
           {media}
           {hasInfo && showInfo === "hover" && (
-            <span className="pointer-events-none absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-black/80 via-black/20 to-transparent p-6 opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-focus-visible:opacity-100">
-              {item.title && <span className="font-display text-base md:text-lg">{item.title}</span>}
-              {item.description && <span className="mt-1 text-sm whitespace-pre-line text-muted">{item.description}</span>}
+            <span className="pointer-events-none absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-black/80 via-black/20 to-transparent p-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-focus-visible:opacity-100 sm:p-6">
+              {item.title && <span className="font-display text-sm sm:text-base md:text-lg">{item.title}</span>}
+              {item.description && <span className="mt-1 text-xs whitespace-pre-line text-muted sm:text-sm">{item.description}</span>}
             </span>
           )}
         </Wrapper>
@@ -91,19 +92,19 @@ export default function ProGallery({
   let body;
   if (layout === "masonry") {
     body = (
-      <div className={`columns-1 ${colClass}`} style={{ columnGap: gap }}>
+      <div className={`columns-1 ${colClass}`} style={{ columnGap: fluidGap }}>
         {items.map((it, i) => renderItem(it, i))}
       </div>
     );
   } else if (layout === "grid") {
     body = (
-      <div className={`grid ${gridCols}`} style={{ gap }}>
+      <div className={`grid ${gridCols}`} style={{ gap: fluidGap }}>
         {items.map((it, i) => renderItem(it, i, { aspect: ratio ?? "1 / 1", fit }))}
       </div>
     );
   } else if (layout === "stack") {
     body = (
-      <div className="flex flex-col items-center" style={{ gap }}>
+      <div className="flex flex-col items-center" style={{ gap: fluidGap }}>
         {items.map((it, i) =>
           renderItem(it, i, {
             className: it.h > it.w ? "max-w-md" : it.h === it.w ? "max-w-3xl" : "max-w-6xl",

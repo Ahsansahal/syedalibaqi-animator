@@ -32,7 +32,7 @@ export function PrimaryButton({ href, children, className = "" }) {
   return (
     <Link
       href={href}
-      className={`inline-flex items-center justify-center border-2 border-accent bg-accent px-12 py-6 font-display text-lg text-ink transition-colors duration-200 hover:bg-ink hover:text-accent md:min-w-[332px] ${className}`}
+      className={`inline-flex min-h-[52px] items-center justify-center border-2 border-accent bg-accent px-7 py-4 font-display text-sm text-ink transition-colors duration-200 hover:bg-ink hover:text-accent sm:px-10 sm:py-5 sm:text-base md:min-w-[300px] md:px-12 md:py-6 md:text-lg ${className}`}
     >
       {children}
     </Link>

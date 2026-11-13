@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Reveal from "@/components/Reveal";
 import { CvButton } from "@/components/ui";
 import { contact, site } from "@/data/site";
 
@@ -19,47 +18,44 @@ function WhatsAppIcon() {
 
 export default function ContactPage() {
   return (
-    <section className="mx-auto max-w-[1240px] px-6 pt-12 pb-24 md:px-12">
+    <section className="mx-auto max-w-[1240px] px-4 pt-8 pb-20 sm:px-6 sm:pt-12 sm:pb-24 md:px-12">
       <p className="font-display text-xs tracking-[0.26em] text-accent uppercase">
         Visual Artist · Motion · Web Design &amp; Dev
       </p>
-      <h1 className="mt-4 font-display text-[clamp(2.3rem,6.5vw,84px)] leading-[0.92] tracking-[-0.045em]">
+      <h1 className="mt-3 font-display text-[clamp(2rem,6.5vw,84px)] leading-[0.94] tracking-[-0.045em] text-paper sm:mt-4">
         {contact.heading}
       </h1>
 
-      <div className="mt-14 grid grid-cols-1 gap-10 border-t border-white/12 pt-12 lg:grid-cols-12">
-        <div className="lg:col-span-7">
-          <Reveal className="font-display text-2xl leading-tight tracking-[-0.035em] md:text-[38px]">
+      <div className="mt-10 grid grid-cols-1 gap-8 border-t border-white/12 pt-10 sm:mt-14 sm:gap-10 sm:pt-12 lg:grid-cols-12">
+        <div className="min-w-0 lg:col-span-7">
+          <div className="font-display text-xl leading-tight tracking-[-0.035em] text-paper sm:text-2xl md:text-[38px]">
             <p>{contact.taglineTop}</p>
-            <p className="mt-1 text-accent">{contact.taglineBottom}</p>
-          </Reveal>
+            <p className="mt-1.5 text-[#ff5a48]">{contact.taglineBottom}</p>
+          </div>
 
           {contact.summary && (
-            <Reveal delay={100} className="mt-6 max-w-[560px] text-lg leading-relaxed text-muted">
-              <p>{contact.summary}</p>
-            </Reveal>
+            <p className="mt-5 max-w-[560px] text-base leading-relaxed text-paper/80 sm:mt-6 sm:text-lg">
+              {contact.summary}
+            </p>
           )}
 
-          <Reveal delay={150} className="mt-8 flex flex-wrap gap-3">
+          <div className="mt-7 flex flex-wrap gap-3 sm:mt-8">
             <Link
               href="/projects"
-              className="inline-flex items-center justify-center rounded-full bg-white/[0.06] px-6 py-3 font-display text-xs tracking-[0.14em] text-paper uppercase ring-1 ring-white/12 transition-colors hover:text-accent"
+              className="inline-flex min-h-[46px] items-center justify-center rounded-full bg-white/[0.08] px-5 py-3 font-display text-xs tracking-[0.14em] text-paper uppercase ring-1 ring-white/20 transition-colors hover:bg-accent hover:text-ink hover:ring-accent sm:px-6"
             >
               Explore Portfolio →
             </Link>
             <Link
               href="/about"
-              className="inline-flex items-center justify-center rounded-full bg-white/[0.06] px-6 py-3 font-display text-xs tracking-[0.14em] text-paper uppercase ring-1 ring-white/12 transition-colors hover:text-accent"
+              className="inline-flex min-h-[46px] items-center justify-center rounded-full bg-white/[0.08] px-5 py-3 font-display text-xs tracking-[0.14em] text-paper uppercase ring-1 ring-white/20 transition-colors hover:bg-accent hover:text-ink hover:ring-accent sm:px-6"
             >
               About &amp; Skills →
             </Link>
-          </Reveal>
+          </div>
         </div>
 
-        <Reveal
-          delay={130}
-          className="flex flex-col justify-between rounded-[22px] bg-neutral-950/90 p-7 ring-1 ring-white/12 md:p-9 lg:col-span-5"
-        >
+        <div className="flex min-w-0 flex-col justify-between rounded-[20px] bg-neutral-950 p-6 ring-1 ring-white/15 sm:rounded-[22px] sm:p-7 md:p-9 lg:col-span-5">
           <div className="space-y-7">
             <div>
               <p className="font-display text-xs tracking-[0.2em] text-muted uppercase">
@@ -109,7 +105,7 @@ export default function ContactPage() {
               <CvButton href={site.cvUrl} />
             </div>
           )}
-        </Reveal>
+        </div>
       </div>
     </section>
   );

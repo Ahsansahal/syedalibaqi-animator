@@ -26,9 +26,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${barlow.variable} ${display.variable}`}>
-      <body className="flex min-h-screen flex-col">
+      <body className="flex min-h-screen flex-col overflow-x-clip">
         <Header />
-        <main className="flex-1 pt-24">{children}</main>
+        <main className="flex-1 overflow-x-clip pt-20 sm:pt-24">{children}</main>
         <Footer />
       </body>
     </html>

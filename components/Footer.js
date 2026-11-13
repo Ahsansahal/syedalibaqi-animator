@@ -4,17 +4,17 @@ import { site } from "@/data/site";
 export default function Footer() {
   const primaryPhone = site.phones[0];
   return (
-    <footer className="mx-auto w-full max-w-[1440px] px-6 pt-16 pb-12 md:px-12">
+    <footer className="mx-auto w-full max-w-[1440px] px-4 pt-12 pb-10 sm:px-6 sm:pt-16 sm:pb-12 md:px-12">
       <div className="border-t border-white/15 pt-8">
-        <div className="flex flex-col justify-between gap-8 lg:flex-row lg:items-end">
-          <div>
+        <div className="flex flex-col justify-between gap-6 sm:gap-8 lg:flex-row lg:items-end">
+          <div className="min-w-0">
             <p className="font-display text-xs tracking-[0.2em] text-accent uppercase">
               {site.role}
             </p>
-            <div className="mt-3 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-muted">
+            <div className="mt-3 flex flex-wrap items-center gap-x-5 gap-y-2.5 text-sm text-muted sm:gap-x-6">
               <a
                 href={`mailto:${site.email}`}
-                className="transition-colors hover:text-accent"
+                className="break-all transition-colors hover:text-accent"
               >
                 {site.email}
               </a>

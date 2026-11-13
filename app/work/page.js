@@ -9,8 +9,8 @@ export const metadata = { title: "Motion Design & Animation" };
 export default function WorkPage() {
   return (
     <>
-      <section className="mx-auto max-w-[980px] px-6 pt-16 pb-16 text-center">
-        <Reveal className="font-display text-xs tracking-[0.28em] text-accent uppercase">
+      <section className="mx-auto max-w-[980px] px-4 pt-10 pb-12 text-center sm:px-6 sm:pt-16 sm:pb-16">
+        <Reveal className="font-display text-xs tracking-[0.22em] text-accent uppercase sm:tracking-[0.28em]">
           Motion Graphics · Showreels · Commercials
         </Reveal>
         <Reveal as="h1" delay={70} className="mt-4 font-display text-page-title">
@@ -22,21 +22,21 @@ export default function WorkPage() {
         </Reveal>
         <Reveal
           delay={140}
-          className="mx-auto mt-10 max-w-[792px] text-lg leading-relaxed text-muted md:text-xl"
+          className="mx-auto mt-6 max-w-[792px] text-base leading-relaxed text-muted sm:mt-10 sm:text-lg md:text-xl"
         >
           <p>{work.intro}</p>
         </Reveal>
-        <Reveal delay={200} className="mt-8">
+        <Reveal delay={200} className="mt-7 sm:mt-8">
           <Link
             href="/projects?category=motion-animation"
-            className="inline-flex items-center justify-center border border-line bg-neutral-950 px-6 py-3 font-display text-xs tracking-[0.16em] text-paper uppercase transition-colors hover:border-accent hover:text-accent"
+            className="inline-flex min-h-[44px] items-center justify-center rounded-full border border-line bg-neutral-950 px-6 py-3 font-display text-xs tracking-[0.14em] text-paper uppercase transition-colors hover:border-accent hover:text-accent sm:tracking-[0.16em]"
           >
             Explore Categorized Portfolio →
           </Link>
         </Reveal>
       </section>
 
-      <section className="mx-auto max-w-[1320px] px-4 pb-20 md:px-10">
+      <section className="mx-auto max-w-[1320px] px-4 pb-16 sm:pb-20 md:px-10">
         <ProGallery
           items={galleries.animationWork}
           layout="stack"

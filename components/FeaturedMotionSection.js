@@ -85,7 +85,7 @@ export default function FeaturedMotionSection({ projects }) {
         {featuredItems.map((project) => (
           <article
             key={project.id}
-            className={`motion-card-reveal group flex flex-col ${project.slotCol}`}
+            className={`motion-card-reveal group flex min-w-0 flex-col ${project.slotCol}`}
           >
             <button
               type="button"
@@ -113,30 +113,30 @@ export default function FeaturedMotionSection({ projects }) {
             </button>
 
             {/* Clean Editorial Caption */}
-            <div className="mt-4 flex flex-col justify-between gap-2 sm:flex-row sm:items-baseline">
-              <div>
-                <h3 className="font-display text-lg tracking-[-0.02em] text-paper transition-colors group-hover:text-accent md:text-xl">
-                  <button
-                    type="button"
-                    onClick={() => setSelectedProject(project)}
-                    className="text-left focus-visible:outline-none"
-                  >
-                    {project.title}
-                  </button>
-                </h3>
-                <p className="mt-1 max-w-[560px] text-sm leading-relaxed text-muted md:text-[15px]">
-                  {project.shortSummary}
-                </p>
-              </div>
+            <div className="mt-4 min-w-0">
+              <h3 className="font-display text-lg tracking-[-0.02em] text-paper transition-colors group-hover:text-accent md:text-xl">
+                <button
+                  type="button"
+                  onClick={() => setSelectedProject(project)}
+                  className="text-left focus-visible:outline-none"
+                >
+                  {project.title}
+                </button>
+              </h3>
+              <p className="mt-1 max-w-[560px] text-sm leading-relaxed text-muted md:text-[15px]">
+                {project.shortSummary}
+              </p>
 
-              <div className="flex shrink-0 flex-wrap items-center gap-2 text-xs tracking-wide text-paper/60">
-                {project.tags?.slice(0, 2).map((t, idx) => (
-                  <span key={t}>
-                    {idx > 0 && <span className="mr-2 text-accent">·</span>}
-                    {t}
-                  </span>
-                ))}
-              </div>
+              {project.tags?.length > 0 && (
+                <div className="mt-2 flex flex-wrap items-center gap-x-2 gap-y-1 text-xs tracking-wide text-paper/65">
+                  {project.tags.slice(0, 3).map((t, idx) => (
+                    <span key={t}>
+                      {idx > 0 && <span className="mr-2 text-accent">·</span>}
+                      {t}
+                    </span>
+                  ))}
+                </div>
+              )}
             </div>
           </article>
         ))}

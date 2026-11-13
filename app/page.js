@@ -29,19 +29,19 @@ export default function HomePage() {
       {/* 02. Signature Visual Artist & Web Creator Statement (Directly Below Hero) */}
       <section
         id="artist-statement"
-        className="mx-auto mt-20 max-w-[1160px] px-6 text-center md:mt-28 md:px-12"
+        className="mx-auto mt-14 max-w-[1160px] px-4 text-center sm:mt-20 sm:px-6 md:mt-28 md:px-12"
       >
-        <Reveal className="space-y-8 font-display text-[clamp(1.05rem,1.9vw,24px)] leading-[1.65] font-normal tracking-[-0.015em] text-paper/95">
+        <Reveal className="space-y-6 font-display text-[clamp(0.98rem,1.9vw,24px)] leading-[1.68] font-normal tracking-[-0.015em] text-paper/95 sm:space-y-8">
           {home.artistStatement.map((para, idx) => (
             <p key={idx}>{para}</p>
           ))}
         </Reveal>
 
-        <Reveal delay={100} className="mt-8 flex flex-wrap items-center justify-center gap-2.5">
+        <Reveal delay={100} className="mt-7 flex flex-wrap items-center justify-center gap-2 sm:mt-8 sm:gap-2.5">
           {about.markets.map((mkt) => (
             <span
               key={mkt}
-              className="rounded-full bg-white/[0.04] px-3.5 py-1.5 text-xs text-accent/95 ring-1 ring-white/12"
+              className="rounded-full bg-white/[0.04] px-3 py-1.5 text-xs text-accent/95 ring-1 ring-white/12 sm:px-3.5"
             >
               {mkt}
             </span>
@@ -52,14 +52,14 @@ export default function HomePage() {
       {/* 03. Full 41-Work Portfolio Showcase Directly on the Home Page */}
       <section
         id="portfolio"
-        className="mx-auto mt-24 max-w-[1440px] scroll-mt-28 px-6 md:mt-32 md:px-12"
+        className="mx-auto mt-16 max-w-[1440px] scroll-mt-24 px-4 sm:mt-24 sm:scroll-mt-28 sm:px-6 md:mt-32 md:px-12"
       >
-        <div className="mb-10 flex flex-col justify-between gap-6 border-b border-white/12 pb-8 md:flex-row md:items-end">
+        <div className="mb-8 flex flex-col justify-between gap-4 border-b border-white/12 pb-6 sm:mb-10 sm:gap-6 sm:pb-8 md:flex-row md:items-end">
           <div>
             <p className="font-display text-xs tracking-[0.26em] text-accent uppercase">
               Selected Portfolio · {portfolioProjects.length} Curated Works
             </p>
-            <h2 className="mt-3 font-display text-[clamp(2rem,4.6vw,60px)] leading-[0.96] tracking-[-0.04em]">
+            <h2 className="mt-3 font-display text-[clamp(1.75rem,4.6vw,60px)] leading-[0.98] tracking-[-0.04em]">
               Visual Art, Motion, Web Design &amp; Builds
             </h2>
           </div>
@@ -82,14 +82,14 @@ export default function HomePage() {
       {/* 03. Visual Art, Packaging, OOH & Campaign Glimpse Wall */}
       <section
         id="visual-wall"
-        className="mx-auto mt-28 max-w-[1440px] scroll-mt-28 px-6 md:mt-36 md:px-12"
+        className="mx-auto mt-20 max-w-[1440px] scroll-mt-24 px-4 sm:mt-28 sm:scroll-mt-28 sm:px-6 md:mt-36 md:px-12"
       >
-        <div className="mb-12 flex flex-col justify-between gap-6 border-b border-white/12 pb-8 md:flex-row md:items-end">
+        <div className="mb-8 flex flex-col justify-between gap-4 border-b border-white/12 pb-6 sm:mb-12 sm:gap-6 sm:pb-8 md:flex-row md:items-end">
           <div>
             <p className="font-display text-xs tracking-[0.26em] text-accent uppercase">
               Visual Artist Gallery · Brand, OOH &amp; Campaign Craft
             </p>
-            <h2 className="mt-3 font-display text-[clamp(1.9rem,4.2vw,54px)] leading-[0.98] tracking-[-0.04em]">
+            <h2 className="mt-3 font-display text-[clamp(1.75rem,4.2vw,54px)] leading-[0.98] tracking-[-0.04em]">
               Selected Visuals &amp; Brand Touchpoints
             </h2>
           </div>
@@ -125,17 +125,17 @@ export default function HomePage() {
       {/* 06. Multidisciplinary Story, Industries, International Markets & Workflow */}
       <section
         id="about-workflow"
-        className="mx-auto mt-28 max-w-[1440px] scroll-mt-28 px-6 md:mt-36 md:px-12"
+        className="mx-auto mt-20 max-w-[1440px] scroll-mt-24 px-4 sm:mt-28 sm:scroll-mt-28 sm:px-6 md:mt-36 md:px-12"
       >
-        <div className="grid grid-cols-1 gap-12 border-t border-white/12 pt-16 lg:grid-cols-12">
-          <Reveal className="lg:col-span-7">
+        <div className="grid grid-cols-1 gap-10 border-t border-white/12 pt-12 sm:gap-12 sm:pt-16 lg:grid-cols-12">
+          <Reveal className="min-w-0 lg:col-span-7">
             <p className="font-display text-xs tracking-[0.26em] text-accent uppercase">
               {about.eyebrow}
             </p>
-            <h2 className="mt-3 font-display text-[clamp(1.9rem,4vw,50px)] leading-[1.02] tracking-[-0.04em]">
+            <h2 className="mt-3 font-display text-[clamp(1.7rem,4vw,50px)] leading-[1.04] tracking-[-0.04em]">
               {about.headline}
             </h2>
-            <div className="mt-6 space-y-4 text-base leading-relaxed text-muted md:text-lg">
+            <div className="mt-5 space-y-4 text-sm leading-relaxed text-muted sm:mt-6 sm:text-base md:text-lg">
               {about.bio.map((p, idx) => (
                 <p key={idx}>{p}</p>
               ))}
@@ -198,7 +198,7 @@ export default function HomePage() {
       </section>
 
       {/* Kinetic Marquees */}
-      <section className="mt-24 space-y-0">
+      <section className="mt-16 space-y-0 sm:mt-24">
         {marquees.map((m) => (
           <Marquee key={m.text} text={m.text} direction={m.direction} />
         ))}
@@ -207,28 +207,28 @@ export default function HomePage() {
       {/* 07. Contact / Let's Work Together */}
       <section
         id="contact-cta"
-        className="mx-auto mt-24 max-w-[1440px] px-6 pb-12 md:mt-32 md:px-12"
+        className="mx-auto mt-16 max-w-[1440px] px-4 pb-10 sm:mt-24 sm:px-6 sm:pb-12 md:mt-32 md:px-12"
       >
-        <Reveal className="overflow-hidden rounded-[26px] bg-neutral-950/90 p-8 ring-1 ring-white/12 md:p-14">
-          <div className="grid grid-cols-1 items-end gap-10 lg:grid-cols-12">
-            <div className="lg:col-span-8">
+        <Reveal className="overflow-hidden rounded-[20px] bg-neutral-950/90 p-6 ring-1 ring-white/12 sm:rounded-[26px] sm:p-8 md:p-14">
+          <div className="grid grid-cols-1 items-end gap-8 sm:gap-10 lg:grid-cols-12">
+            <div className="min-w-0 lg:col-span-8">
               <p className="font-display text-xs tracking-[0.26em] text-accent uppercase">
                 Let&apos;s Work Together
               </p>
-              <h2 className="mt-4 font-display text-[clamp(2rem,5vw,64px)] leading-[0.96] tracking-[-0.04em]">
+              <h2 className="mt-3 font-display text-[clamp(1.7rem,5vw,64px)] leading-[0.98] tracking-[-0.04em] sm:mt-4">
                 {contact.taglineTop}{" "}
                 <span className="text-accent">{contact.taglineBottom}</span>
               </h2>
-              <p className="mt-4 max-w-[600px] text-base leading-relaxed text-muted md:text-lg">
+              <p className="mt-4 max-w-[600px] text-sm leading-relaxed text-muted sm:text-base md:text-lg">
                 {contact.summary}
               </p>
             </div>
 
-            <div className="flex flex-col items-start gap-4 lg:col-span-4 lg:items-end">
-              <div className="flex flex-wrap gap-3">
+            <div className="flex min-w-0 flex-col items-start gap-4 lg:col-span-4 lg:items-end">
+              <div className="flex w-full flex-wrap gap-3 sm:w-auto">
                 <Link
                   href="/contact"
-                  className="inline-flex items-center gap-2 rounded-full bg-accent px-7 py-4 font-display text-xs tracking-[0.14em] text-ink uppercase transition-colors hover:bg-paper"
+                  className="inline-flex min-h-[48px] flex-1 items-center justify-center gap-2 rounded-full bg-accent px-6 py-3.5 font-display text-xs tracking-[0.14em] whitespace-nowrap text-ink uppercase transition-colors hover:bg-paper sm:flex-initial sm:px-7 sm:py-4"
                 >
                   <span>Get in Touch</span>
                   <span aria-hidden="true">↗</span>
@@ -238,7 +238,7 @@ export default function HomePage() {
                     href={`https://wa.me/${primaryPhone.whatsapp}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 rounded-full border border-white/25 px-6 py-4 font-display text-xs tracking-[0.14em] text-paper uppercase transition-colors hover:border-[#25D366] hover:text-[#25D366]"
+                    className="inline-flex min-h-[48px] flex-1 items-center justify-center gap-2 rounded-full border border-white/25 px-6 py-3.5 font-display text-xs tracking-[0.14em] whitespace-nowrap text-paper uppercase transition-colors hover:border-[#25D366] hover:text-[#25D366] sm:flex-initial sm:py-4"
                   >
                     WhatsApp
                   </a>
@@ -248,7 +248,7 @@ export default function HomePage() {
               <div className="flex flex-col gap-1 text-sm text-muted lg:text-right">
                 <a
                   href={`mailto:${site.email}`}
-                  className="font-display text-xs tracking-wide text-paper/90 transition-colors hover:text-accent"
+                  className="break-all font-display text-xs tracking-wide text-paper/90 transition-colors hover:text-accent"
                 >
                   {site.email}
                 </a>

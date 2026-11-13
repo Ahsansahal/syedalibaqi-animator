@@ -22,20 +22,25 @@ export default function Lightbox({ items, index, onClose, onStep }) {
   const item = items[index];
   return (
     <div role="dialog" aria-modal="true" className="fixed inset-0 z-[100] flex flex-col bg-black/95" onClick={onClose}>
-      <div className="flex items-center justify-between p-5 text-sm text-muted">
+      <div className="flex items-center justify-between px-4 py-3.5 text-sm text-muted sm:p-5">
         <span>
           {index + 1} / {items.length}
         </span>
-        <button type="button" onClick={onClose} aria-label="Close" className="text-4xl leading-none text-paper hover:text-accent">
+        <button
+          type="button"
+          onClick={onClose}
+          aria-label="Close"
+          className="flex h-11 w-11 items-center justify-center rounded-full bg-white/[0.06] text-2xl leading-none text-paper ring-1 ring-white/15 transition-colors hover:bg-accent hover:text-ink"
+        >
           ×
         </button>
       </div>
-      <div className="relative flex min-h-0 flex-1 items-center justify-center px-14 md:px-20" onClick={(e) => e.stopPropagation()}>
+      <div className="relative flex min-h-0 flex-1 items-center justify-center px-3 sm:px-14 md:px-20" onClick={(e) => e.stopPropagation()}>
         <button
           type="button"
           aria-label="Previous"
           onClick={() => onStep(-1)}
-          className="absolute left-2 text-5xl text-paper hover:text-accent md:left-6"
+          className="absolute left-2 z-10 flex h-11 w-11 items-center justify-center rounded-full bg-black/75 text-2xl text-paper ring-1 ring-white/20 transition-colors hover:bg-accent hover:text-ink md:left-6"
         >
           ‹
         </button>
@@ -53,15 +58,15 @@ export default function Lightbox({ items, index, onClose, onStep }) {
           type="button"
           aria-label="Next"
           onClick={() => onStep(1)}
-          className="absolute right-2 text-5xl text-paper hover:text-accent md:right-6"
+          className="absolute right-2 z-10 flex h-11 w-11 items-center justify-center rounded-full bg-black/75 text-2xl text-paper ring-1 ring-white/20 transition-colors hover:bg-accent hover:text-ink md:right-6"
         >
           ›
         </button>
       </div>
       {(item.title || item.description) && (
-        <div className="p-6 text-center" onClick={(e) => e.stopPropagation()}>
-          {item.title && <p className="font-display text-lg">{item.title}</p>}
-          {item.description && <p className="mt-1 whitespace-pre-line text-muted">{item.description}</p>}
+        <div className="px-4 py-4 text-center sm:p-6" onClick={(e) => e.stopPropagation()}>
+          {item.title && <p className="font-display text-base sm:text-lg">{item.title}</p>}
+          {item.description && <p className="mt-1 text-sm whitespace-pre-line text-muted sm:text-base">{item.description}</p>}
         </div>
       )}
     </div>

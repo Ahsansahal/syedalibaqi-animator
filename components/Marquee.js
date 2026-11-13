@@ -12,9 +12,9 @@ export default function Marquee({ text, direction = "rtl", duration = 30 }) {
         {[0, 1].map((half) => (
           <div key={half} className="flex shrink-0">
             {items.map((i) => (
-              <span key={i} className="flex items-center font-display text-3xl whitespace-nowrap md:text-[44px]">
-                <span className="px-6">{text}</span>
-                <svg viewBox="0 0 24 24" className="h-6 w-6 fill-accent md:h-8 md:w-8">
+              <span key={i} className="flex items-center font-display text-xl whitespace-nowrap sm:text-2xl md:text-[42px]">
+                <span className="px-4 sm:px-6">{text}</span>
+                <svg viewBox="0 0 24 24" className="h-5 w-5 fill-accent sm:h-6 sm:w-6 md:h-8 md:w-8">
                   <path d="M12 0l2.6 9.4L24 12l-9.4 2.6L12 24l-2.6-9.4L0 12l9.4-2.6z" />
                 </svg>
               </span>

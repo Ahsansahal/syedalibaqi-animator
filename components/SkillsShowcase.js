@@ -127,14 +127,14 @@ export default function SkillsShowcase({ data }) {
     <section
       ref={sectionRef}
       id="skills"
-      className="mx-auto mt-28 max-w-[1440px] scroll-mt-28 px-6 md:mt-36 md:px-12"
+      className="mx-auto mt-20 max-w-[1440px] scroll-mt-28 px-4 sm:mt-28 sm:px-6 md:mt-36 md:px-12"
     >
       {/* Section Header */}
       <div className="max-w-[840px]">
         <p className="font-display text-xs tracking-[0.26em] text-accent uppercase">
           Multidisciplinary Craft
         </p>
-        <h2 className="mt-3 font-display text-[clamp(2rem,4.6vw,58px)] leading-[0.98] tracking-[-0.04em]">
+        <h2 className="mt-3 font-display text-[clamp(1.75rem,4.6vw,58px)] leading-[0.98] tracking-[-0.04em]">
           Visual Artist at Core. Motion, Web Design &amp; Code Complete.
         </h2>
       </div>
@@ -142,10 +142,10 @@ export default function SkillsShowcase({ data }) {
       {/* =================================================================== */}
       {/* A. PRIMARY — MOTION DESIGN & ANIMATION (Strongest Visual Prominence) */}
       {/* =================================================================== */}
-      <div className="skill-tier mt-12 overflow-hidden rounded-[24px] bg-neutral-950/90 p-7 ring-1 ring-white/12 md:p-11">
-        <div className="grid grid-cols-1 items-start gap-10 lg:grid-cols-12">
+      <div className="skill-tier mt-10 overflow-hidden rounded-[20px] bg-neutral-950/90 p-5 ring-1 ring-white/12 sm:mt-12 sm:rounded-[24px] sm:p-7 md:p-11">
+        <div className="grid grid-cols-1 items-start gap-8 sm:gap-10 lg:grid-cols-12">
           {/* Left: Title + 10 Motion Skills */}
-          <div className="lg:col-span-7">
+          <div className="min-w-0 lg:col-span-7">
             <div className="flex items-center gap-3">
               <span className="font-display text-xs text-accent">{motion.priority}</span>
               <span className="h-px w-8 bg-accent/70" aria-hidden="true" />
@@ -154,15 +154,15 @@ export default function SkillsShowcase({ data }) {
               </span>
             </div>
 
-            <h3 className="mt-4 font-display text-2xl tracking-[-0.03em] md:text-4xl">
+            <h3 className="mt-4 font-display text-xl tracking-[-0.03em] sm:text-2xl md:text-4xl">
               {motion.title}
             </h3>
-            <p className="mt-3 max-w-[560px] text-base leading-relaxed text-muted md:text-lg">
+            <p className="mt-3 max-w-[560px] text-sm leading-relaxed text-muted sm:text-base md:text-lg">
               {motion.tagline}
             </p>
 
             {/* Clean Editorial 2-Column Motion Skill Grid */}
-            <div className="mt-8 grid grid-cols-1 gap-x-8 gap-y-3.5 sm:grid-cols-2">
+            <div className="mt-6 grid grid-cols-1 gap-x-8 gap-y-3 sm:mt-8 sm:grid-cols-2 sm:gap-y-3.5">
               {motion.skills.map((skill) => (
                 <div
                   key={skill}
@@ -181,8 +181,8 @@ export default function SkillsShowcase({ data }) {
           </div>
 
           {/* Right: Live Motion Reel Preview + Interactive GSAP Lab */}
-          <div className="flex flex-col gap-5 lg:col-span-5">
-            <div className="overflow-hidden rounded-[18px] bg-black ring-1 ring-white/12">
+          <div className="flex min-w-0 flex-col gap-5 lg:col-span-5">
+            <div className="overflow-hidden rounded-[16px] bg-black ring-1 ring-white/12 sm:rounded-[18px]">
               <VideoPlayer
                 ambient
                 src={motion.previewVideo.src}
@@ -195,7 +195,7 @@ export default function SkillsShowcase({ data }) {
             {/* Interactive GSAP Live Demo Strip */}
             <div
               ref={demoBoxRef}
-              className="rounded-[18px] bg-black/80 p-5 ring-1 ring-white/10"
+              className="rounded-[16px] bg-black/80 p-4 ring-1 ring-white/10 sm:rounded-[18px] sm:p-5"
             >
               <div className="flex flex-wrap items-center justify-between gap-2">
                 <span className="font-display text-[10px] tracking-[0.2em] text-muted uppercase">
@@ -207,7 +207,7 @@ export default function SkillsShowcase({ data }) {
                       key={m.id}
                       type="button"
                       onClick={() => setActiveMode(m.id)}
-                      className={`rounded-full px-3 py-1 font-display text-[10px] tracking-[0.08em] transition-colors ${
+                      className={`min-h-[30px] rounded-full px-3 py-1 font-display text-[10px] tracking-[0.08em] transition-colors ${
                         activeMode === m.id
                           ? "bg-accent text-ink"
                           : "bg-white/[0.06] text-paper/75 hover:text-paper"
@@ -222,8 +222,8 @@ export default function SkillsShowcase({ data }) {
               <div className="mt-4 space-y-2.5">
                 {["Ease & Timing", "Stagger Sequence", "Viewport Scrub", "Transform GPU"].map(
                   (label, idx) => (
-                    <div key={label} className="flex items-center gap-3">
-                      <span className="w-28 shrink-0 text-[11px] text-muted">{label}</span>
+                    <div key={label} className="flex items-center gap-2.5 sm:gap-3">
+                      <span className="w-24 shrink-0 text-[11px] text-muted sm:w-28">{label}</span>
                       <div className="h-2 flex-1 overflow-hidden rounded-full bg-white/[0.06]">
                         <div
                           className={`gsap-demo-bar h-full origin-left rounded-full ${
@@ -257,8 +257,8 @@ export default function SkillsShowcase({ data }) {
       {/* =================================================================== */}
       {/* B. SECONDARY — WEBSITE DESIGN & UI/UX                               */}
       {/* =================================================================== */}
-      <div className="skill-tier mt-16 grid grid-cols-1 items-start gap-10 border-t border-white/12 pt-14 lg:grid-cols-12">
-        <div className="lg:col-span-5">
+      <div className="skill-tier mt-14 grid grid-cols-1 items-start gap-8 border-t border-white/12 pt-12 sm:mt-16 sm:gap-10 sm:pt-14 lg:grid-cols-12">
+        <div className="min-w-0 lg:col-span-5">
           <div className="flex items-center gap-3">
             <span className="font-display text-xs text-accent">{webDesign.priority}</span>
             <span className="h-px w-8 bg-white/25" aria-hidden="true" />
@@ -266,20 +266,20 @@ export default function SkillsShowcase({ data }) {
               {webDesign.eyebrow}
             </span>
           </div>
-          <h3 className="mt-3 font-display text-2xl tracking-[-0.03em] md:text-3xl">
+          <h3 className="mt-3 font-display text-xl tracking-[-0.03em] sm:text-2xl md:text-3xl">
             {webDesign.title}
           </h3>
-          <p className="mt-3 max-w-[440px] text-base leading-relaxed text-muted">
+          <p className="mt-3 max-w-[440px] text-sm leading-relaxed text-muted sm:text-base">
             {webDesign.tagline}
           </p>
 
           {/* Compact Visual Triptych from Real Supplied Work */}
-          <div className="mt-6 grid grid-cols-3 gap-3">
+          <div className="mt-6 grid grid-cols-3 gap-2 sm:gap-3">
             {webDesign.previews.map((item) => (
               <Link
                 key={item.src}
                 href="/projects?category=website-design"
-                className="group relative aspect-[4/3] overflow-hidden rounded-xl bg-neutral-900 ring-1 ring-white/10"
+                className="group relative aspect-[4/3] overflow-hidden rounded-lg bg-neutral-900 ring-1 ring-white/10 sm:rounded-xl"
               >
                 <Image
                   src={item.src}
@@ -288,8 +288,8 @@ export default function SkillsShowcase({ data }) {
                   sizes="160px"
                   className="object-cover transition-transform duration-500 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent" />
-                <span className="absolute bottom-2 left-2.5 text-[10px] font-medium tracking-wider text-paper/90 uppercase">
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
+                <span className="absolute bottom-1.5 left-2 text-[9px] font-medium tracking-wider text-paper/90 uppercase sm:bottom-2 sm:left-2.5 sm:text-[10px]">
                   {item.label}
                 </span>
               </Link>

@@ -11,22 +11,22 @@ export default function ProjectsPage() {
   return (
     <>
       {/* Editorial Header — SSR visible immediately for fast FCP/LCP */}
-      <header className="relative mx-auto max-w-[1440px] px-6 pt-8 pb-12 md:px-12 md:pt-12">
-        <div className="grid grid-cols-1 items-end gap-8 lg:grid-cols-12">
-          <div className="lg:col-span-8">
-            <p className="font-display text-xs tracking-[0.26em] text-accent uppercase">
+      <header className="relative mx-auto max-w-[1440px] px-4 pt-6 pb-8 sm:px-6 sm:pt-8 sm:pb-12 md:px-12 md:pt-12">
+        <div className="grid grid-cols-1 items-end gap-6 sm:gap-8 lg:grid-cols-12">
+          <div className="min-w-0 lg:col-span-8">
+            <p className="font-display text-xs tracking-[0.22em] text-accent uppercase sm:tracking-[0.26em]">
               Visual Artist · Motion Designer · Website Designer &amp; Developer
             </p>
-            <h1 className="mt-3 font-display text-[clamp(2.4rem,6.8vw,92px)] leading-[0.92] tracking-[-0.045em] uppercase">
+            <h1 className="mt-3 font-display text-[clamp(2rem,6.8vw,92px)] leading-[0.94] tracking-[-0.045em] uppercase sm:leading-[0.92]">
               {projects.title}
             </h1>
-            <p className="mt-5 max-w-[680px] text-base leading-relaxed text-muted md:text-lg">
+            <p className="mt-4 max-w-[680px] text-sm leading-relaxed text-muted sm:mt-5 sm:text-base md:text-lg">
               {projects.intro}
             </p>
           </div>
 
-          <div className="lg:col-span-4">
-            <div className="overflow-hidden rounded-[18px] bg-neutral-950 ring-1 ring-white/12">
+          <div className="min-w-0 lg:col-span-4">
+            <div className="overflow-hidden rounded-[16px] bg-neutral-950 ring-1 ring-white/12 sm:rounded-[18px]">
               <VideoPlayer
                 ambient
                 priority
@@ -42,7 +42,7 @@ export default function ProjectsPage() {
       </header>
 
       {/* Categorized Portfolio Explorer */}
-      <section className="mx-auto max-w-[1440px] px-6 pt-4 pb-24 md:px-12">
+      <section className="mx-auto max-w-[1440px] px-4 pt-2 pb-20 sm:px-6 sm:pt-4 sm:pb-24 md:px-12">
         <PortfolioExplorer
           categories={portfolioCategories}
           projects={portfolioProjects}

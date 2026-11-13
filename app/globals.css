@@ -6,7 +6,7 @@
   --color-paper: #ffffff;
   --color-accent: #e53726;
   --color-brown: #8b6755;
-  --color-muted: #bfbfbf;
+  --color-muted: #cccccc;
   --color-line: #404040;
 
   --font-sans: var(--font-barlow), ui-sans-serif, system-ui, sans-serif;
@@ -22,7 +22,7 @@ body {
   background: var(--color-ink);
   color: var(--color-paper);
   font-family: var(--font-sans);
-  font-weight: 200; /* Barlow ExtraLight, as on the original */
+  font-weight: 300;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -31,23 +31,37 @@ body {
   color: var(--color-paper);
 }
 
-/* Fluid display sizes that scale from the 980px Wix grid. */
+/* Fluid display sizes that scale cleanly down to 320px viewports. */
 .text-hero {
-  font-size: clamp(2.6rem, 9.6vw, 123px);
-  line-height: 0.85;
+  font-size: clamp(2.05rem, 8.8vw, 118px);
+  line-height: 0.9;
   letter-spacing: -0.04em;
+  overflow-wrap: break-word;
 }
 .text-page-title {
-  font-size: clamp(2.4rem, 7.8vw, 100px);
-  line-height: 0.9;
-  letter-spacing: -0.05em;
+  font-size: clamp(1.95rem, 7.2vw, 96px);
+  line-height: 0.92;
+  letter-spacing: -0.045em;
+  overflow-wrap: break-word;
+}
+
+/* Hide scrollbars on horizontal mobile chip bars while keeping touch scroll */
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
 }
 
 /* Fade-up reveal used by <Reveal>. */
 .reveal {
   opacity: 0;
-  transform: translateY(40px);
-  transition: opacity 1s ease, transform 1s cubic-bezier(0.22, 1, 0.36, 1);
+  transform: translateY(20px);
+  transition: opacity 0.55s ease, transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.reveal.is-instant {
+  transition: none !important;
 }
 .reveal.is-visible {
   opacity: 1;

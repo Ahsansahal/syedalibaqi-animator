@@ -50,23 +50,23 @@ export default function HomePortfolioSections({ categories, projects }) {
     <>
       <section
         id="development-portfolio"
-        className="mx-auto mt-28 max-w-[1440px] scroll-mt-28 px-6 md:mt-36 md:px-12"
+        className="mx-auto mt-20 max-w-[1440px] scroll-mt-28 px-4 sm:mt-28 sm:px-6 md:mt-36 md:px-12"
       >
-        <div className="flex flex-col justify-between gap-6 border-b border-white/12 pb-8 lg:flex-row lg:items-end">
+        <div className="flex flex-col justify-between gap-5 border-b border-white/12 pb-6 sm:gap-6 sm:pb-8 lg:flex-row lg:items-end">
           <div>
             <p className="font-display text-xs tracking-[0.26em] text-accent uppercase">
               Website Engineering · 5 Independent Platforms
             </p>
-            <h2 className="mt-3 font-display text-[clamp(1.9rem,4.2vw,54px)] leading-[0.98] tracking-[-0.04em]">
+            <h2 className="mt-3 font-display text-[clamp(1.75rem,4.2vw,54px)] leading-[0.98] tracking-[-0.04em]">
               Website Development by Platform
             </h2>
           </div>
 
-          {/* Separate Functional Platform Tabs */}
+          {/* Separate Functional Platform Tabs — swipeable on narrow mobile, wrapped on tablet/desktop */}
           <div
             role="tablist"
             aria-label="Development platforms"
-            className="flex flex-wrap items-center gap-2"
+            className="no-scrollbar -mx-4 flex snap-x items-center gap-2 overflow-x-auto px-4 py-1 sm:mx-0 sm:flex-wrap sm:overflow-visible sm:px-0 sm:py-0"
           >
             {devTabs.map((tab) => {
               const active = activeDevTab === tab.id;
@@ -77,7 +77,7 @@ export default function HomePortfolioSections({ categories, projects }) {
                   role="tab"
                   aria-selected={active}
                   onClick={() => setActiveDevTab(tab.id)}
-                  className={`rounded-full px-5 py-2.5 font-display text-xs tracking-[0.06em] transition-all duration-200 ${
+                  className={`min-h-[42px] shrink-0 snap-start rounded-full px-4 py-2.5 font-display text-xs tracking-[0.06em] whitespace-nowrap transition-all duration-200 sm:px-5 ${
                     active
                       ? "bg-accent text-ink"
                       : "bg-white/[0.05] text-paper/80 ring-1 ring-white/10 hover:text-paper"
@@ -91,19 +91,19 @@ export default function HomePortfolioSections({ categories, projects }) {
         </div>
 
         {/* Active Independent Platform Panel */}
-        <div ref={devPanelRef} className="mt-10">
+        <div ref={devPanelRef} className="mt-8 sm:mt-10">
           {activeDevProjects.length > 0 ? (
             <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:items-center">
               {activeDevProjects.map((project) => (
                 <div
                   key={project.id}
-                  className="grid grid-cols-1 gap-8 lg:col-span-12 lg:grid-cols-12 lg:items-center"
+                  className="grid grid-cols-1 gap-6 sm:gap-8 lg:col-span-12 lg:grid-cols-12 lg:items-center"
                 >
                   <button
                     type="button"
                     onClick={() => setSelectedProject(project)}
                     aria-label={`Inspect ${project.title}`}
-                    className="group relative aspect-[16/10] w-full overflow-hidden rounded-[20px] bg-neutral-950 text-left ring-1 ring-white/12 lg:col-span-7"
+                    className="group relative aspect-[16/10] w-full overflow-hidden rounded-[18px] bg-neutral-950 text-left ring-1 ring-white/12 sm:rounded-[20px] lg:col-span-7"
                   >
                     <Image
                       src={project.thumbnail}
@@ -114,18 +114,18 @@ export default function HomePortfolioSections({ categories, projects }) {
                     />
                   </button>
 
-                  <div className="lg:col-span-5">
+                  <div className="min-w-0 lg:col-span-5">
                     <span className="font-display text-xs tracking-[0.2em] text-accent uppercase">
                       {project.categoryLabel}
                     </span>
-                    <h3 className="mt-3 font-display text-2xl leading-tight tracking-[-0.03em] md:text-3xl">
+                    <h3 className="mt-2.5 font-display text-xl leading-tight tracking-[-0.03em] sm:mt-3 sm:text-2xl md:text-3xl">
                       {project.title}
                     </h3>
-                    <p className="mt-4 text-base leading-relaxed text-muted">
+                    <p className="mt-3 text-sm leading-relaxed text-muted sm:mt-4 sm:text-base">
                       {project.shortSummary}
                     </p>
 
-                    <div className="mt-6 flex flex-wrap gap-2">
+                    <div className="mt-5 flex flex-wrap gap-2 sm:mt-6">
                       {project.tags?.map((tag) => (
                         <span
                           key={tag}
@@ -136,11 +136,11 @@ export default function HomePortfolioSections({ categories, projects }) {
                       ))}
                     </div>
 
-                    <div className="mt-8 flex flex-wrap items-center gap-4">
+                    <div className="mt-6 flex flex-wrap items-center gap-4 sm:mt-8">
                       <button
                         type="button"
                         onClick={() => setSelectedProject(project)}
-                        className="rounded-full bg-paper px-6 py-3 font-display text-xs tracking-[0.12em] text-ink uppercase transition-colors hover:bg-accent"
+                        className="min-h-[44px] rounded-full bg-paper px-6 py-3 font-display text-xs tracking-[0.12em] text-ink uppercase transition-colors hover:bg-accent"
                       >
                         Inspect Screens
                       </button>
@@ -156,8 +156,8 @@ export default function HomePortfolioSections({ categories, projects }) {
               ))}
             </div>
           ) : activeDevMeta?.platformShowcase ? (
-            <div className="grid grid-cols-1 gap-8 rounded-[22px] bg-neutral-950/90 p-7 ring-1 ring-white/10 md:p-10 lg:grid-cols-12 lg:items-center">
-              <div className="relative aspect-[16/10] w-full overflow-hidden rounded-[16px] bg-black ring-1 ring-white/10 lg:col-span-6">
+            <div className="grid grid-cols-1 gap-6 rounded-[20px] bg-neutral-950/90 p-5 ring-1 ring-white/10 sm:gap-8 sm:rounded-[22px] sm:p-7 md:p-10 lg:grid-cols-12 lg:items-center">
+              <div className="relative aspect-[16/10] w-full overflow-hidden rounded-[14px] bg-black ring-1 ring-white/10 sm:rounded-[16px] lg:col-span-6">
                 <Image
                   src={activeDevMeta.platformShowcase.previewVisual}
                   alt={activeDevMeta.platformShowcase.previewCaption}
@@ -166,23 +166,23 @@ export default function HomePortfolioSections({ categories, projects }) {
                   className="object-cover opacity-90"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-transparent" />
-                <span className="absolute bottom-4 left-4 font-display text-[11px] tracking-[0.16em] text-paper/90 uppercase">
+                <span className="absolute bottom-3 left-3 font-display text-[10px] tracking-[0.14em] text-paper/90 uppercase sm:bottom-4 sm:left-4 sm:text-[11px] sm:tracking-[0.16em]">
                   {activeDevMeta.platformShowcase.previewCaption}
                 </span>
               </div>
 
-              <div className="lg:col-span-6">
+              <div className="min-w-0 lg:col-span-6">
                 <span className="font-display text-xs tracking-[0.22em] text-accent uppercase">
                   {activeDevMeta.platformShowcase.eyebrow}
                 </span>
-                <h3 className="mt-3 font-display text-2xl leading-tight tracking-[-0.03em] md:text-3xl">
+                <h3 className="mt-2.5 font-display text-xl leading-tight tracking-[-0.03em] sm:mt-3 sm:text-2xl md:text-3xl">
                   {activeDevMeta.platformShowcase.title}
                 </h3>
-                <p className="mt-3 text-base leading-relaxed text-muted">
+                <p className="mt-3 text-sm leading-relaxed text-muted sm:text-base">
                   {activeDevMeta.platformShowcase.summary}
                 </p>
 
-                <ul className="mt-6 grid grid-cols-1 gap-2.5 sm:grid-cols-2">
+                <ul className="mt-5 grid grid-cols-1 gap-2.5 sm:mt-6 sm:grid-cols-2">
                   {activeDevMeta.platformShowcase.capabilities.map((cap) => (
                     <li
                       key={cap}
@@ -194,7 +194,7 @@ export default function HomePortfolioSections({ categories, projects }) {
                   ))}
                 </ul>
 
-                <div className="mt-6 flex flex-wrap gap-2">
+                <div className="mt-5 flex flex-wrap gap-2 sm:mt-6">
                   {activeDevMeta.platformShowcase.stack.map((tech) => (
                     <span
                       key={tech}
@@ -212,7 +212,7 @@ export default function HomePortfolioSections({ categories, projects }) {
                 <div className="mt-6 flex flex-wrap items-center gap-4">
                   <Link
                     href="/contact"
-                    className="rounded-full bg-accent px-6 py-3 font-display text-xs tracking-[0.14em] text-ink uppercase transition-colors hover:bg-paper"
+                    className="inline-flex min-h-[44px] items-center rounded-full bg-accent px-5 py-3 font-display text-xs tracking-[0.12em] text-ink uppercase transition-colors hover:bg-paper sm:px-6 sm:tracking-[0.14em]"
                   >
                     Request Live {activeDevMeta.label} Links
                   </Link>

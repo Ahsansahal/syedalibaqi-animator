@@ -26,24 +26,24 @@ export default function MotionHero({ data }) {
         // Animate subtle GPU transforms without hiding SSR / LCP elements at opacity: 0
         const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
 
-        tl.fromTo(".hero-eyebrow", { y: 12 }, { y: 0, duration: 0.5 })
+        tl.fromTo(".hero-eyebrow", { y: 10 }, { y: 0, duration: 0.45 }, 0)
           .fromTo(
             ".hero-line-inner",
-            { yPercent: 100 },
-            { yPercent: 0, duration: 0.78, stagger: 0.08 },
-            "-=0.35"
+            { y: 18 },
+            { y: 0, duration: 0.55, stagger: 0.06 },
+            0.04
           )
           .fromTo(
             ".hero-fade",
-            { y: 16 },
-            { y: 0, duration: 0.65, stagger: 0.06 },
-            "-=0.45"
+            { y: 14 },
+            { y: 0, duration: 0.55, stagger: 0.05 },
+            0.1
           )
           .fromTo(
             stageRef.current,
-            { y: 24, scale: 0.97 },
-            { y: 0, scale: 0.97, duration: 0.75 },
-            "-=0.5"
+            { y: 20, scale: 0.98 },
+            { y: 0, scale: 0.98, duration: 0.6 },
+            0.12
           );
 
         if (stageRef.current) {
@@ -133,29 +133,29 @@ export default function MotionHero({ data }) {
   return (
     <section
       ref={rootRef}
-      className="relative mx-auto max-w-[1440px] overflow-hidden px-6 pt-6 md:px-12 md:pt-10"
+      className="relative mx-auto max-w-[1440px] overflow-hidden px-4 pt-4 sm:px-6 sm:pt-6 md:px-12 md:pt-10"
     >
       {/* Subtle ambient glow */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute -top-24 right-0 h-[420px] w-[420px] rounded-full bg-accent/12 blur-[130px]"
+        className="pointer-events-none absolute -top-24 right-0 h-[320px] w-[320px] rounded-full bg-accent/12 blur-[120px] sm:h-[420px] sm:w-[420px]"
       />
 
       {/* Eyebrow */}
-      <div className="hero-eyebrow flex flex-wrap items-center gap-3">
-        <span className="inline-flex items-center gap-2.5 rounded-full border border-white/15 bg-white/[0.03] px-4 py-1.5 font-display text-[11px] tracking-[0.2em] text-paper uppercase">
-          <span className="h-2 w-2 animate-pulse rounded-full bg-accent" aria-hidden="true" />
-          {data.eyebrow}
+      <div className="hero-eyebrow flex flex-wrap items-center gap-2.5 sm:gap-3">
+        <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.03] px-3 py-1.5 font-display text-[10px] tracking-[0.14em] text-paper uppercase sm:gap-2.5 sm:px-4 sm:text-[11px] sm:tracking-[0.2em]">
+          <span className="h-2 w-2 shrink-0 animate-pulse rounded-full bg-accent" aria-hidden="true" />
+          <span>{data.eyebrow}</span>
         </span>
-        <span className="text-xs tracking-[0.22em] text-muted uppercase">
+        <span className="text-[11px] tracking-[0.15em] text-muted uppercase sm:text-xs sm:tracking-[0.22em]">
           {data.subtitleTag || "Visual Art · Motion · Web Design & Code"}
         </span>
       </div>
 
-      {/* Monumental Split-Masked Headline */}
-      <h1 className="mt-7 font-display text-[clamp(2.35rem,7.8vw,108px)] leading-[0.9] tracking-[-0.045em] uppercase">
+      {/* Monumental Headline */}
+      <h1 className="mt-6 font-display text-[clamp(1.92rem,7.8vw,108px)] leading-[0.94] tracking-[-0.045em] uppercase sm:mt-7 sm:leading-[0.92]">
         {data.heroLines.map((line, i) => (
-          <span key={line} className="block overflow-hidden py-0.5">
+          <span key={line} className="block py-0.5">
             <span
               className={`hero-line-inner block ${
                 i === 1 ? "text-accent" : "text-paper"
@@ -168,22 +168,22 @@ export default function MotionHero({ data }) {
       </h1>
 
       {/* Supporting Intro + Clear CTAs */}
-      <div className="mt-9 grid grid-cols-1 items-end gap-8 border-t border-white/12 pt-8 lg:grid-cols-12">
-        <p className="hero-fade max-w-[680px] text-lg leading-[1.55] font-light text-paper/85 md:text-[21px] lg:col-span-7">
+      <div className="mt-7 grid grid-cols-1 items-end gap-6 border-t border-white/12 pt-6 sm:mt-9 sm:gap-8 sm:pt-8 lg:grid-cols-12">
+        <p className="hero-fade max-w-[680px] text-base leading-[1.58] font-light text-paper/85 sm:text-lg md:text-[21px] lg:col-span-7">
           {data.intro}
         </p>
 
-        <div className="hero-fade flex flex-wrap items-center gap-3.5 lg:col-span-5 lg:justify-end">
+        <div className="hero-fade flex flex-wrap items-center gap-3 sm:gap-3.5 lg:col-span-5 lg:justify-end">
           <Link
             href={data.primaryCta.href}
-            className="inline-flex items-center gap-2.5 rounded-full bg-accent px-7 py-4 font-display text-xs tracking-[0.14em] text-ink uppercase transition-transform duration-300 hover:-translate-y-0.5 hover:bg-paper"
+            className="inline-flex min-h-[48px] flex-1 items-center justify-center gap-2 rounded-full bg-accent px-5 py-3.5 font-display text-xs tracking-[0.12em] whitespace-nowrap text-ink uppercase transition-transform duration-300 hover:-translate-y-0.5 hover:bg-paper sm:flex-initial sm:px-7 sm:py-4 sm:tracking-[0.14em]"
           >
             <span>{data.primaryCta.label}</span>
             <span aria-hidden="true">↗</span>
           </Link>
           <Link
             href={data.secondaryCta.href}
-            className="inline-flex items-center gap-2 rounded-full border border-white/25 px-7 py-4 font-display text-xs tracking-[0.14em] text-paper uppercase transition-colors duration-300 hover:border-accent hover:text-accent"
+            className="inline-flex min-h-[48px] flex-1 items-center justify-center gap-2 rounded-full border border-white/25 px-5 py-3.5 font-display text-xs tracking-[0.12em] whitespace-nowrap text-paper uppercase transition-colors duration-300 hover:border-accent hover:text-accent sm:flex-initial sm:px-7 sm:py-4 sm:tracking-[0.14em]"
           >
             {data.secondaryCta.label}
           </Link>
@@ -194,9 +194,9 @@ export default function MotionHero({ data }) {
       <div
         ref={stageRef}
         id="showreel"
-        className="mt-12 scroll-mt-32 md:mt-16"
+        className="mt-10 scroll-mt-28 sm:mt-12 md:mt-16"
       >
-        <div className="group relative aspect-[16/9] w-full overflow-hidden rounded-[22px] bg-neutral-950 ring-1 ring-white/12 md:rounded-[28px]">
+        <div className="group relative aspect-[16/10] w-full overflow-hidden rounded-[18px] bg-neutral-950 ring-1 ring-white/12 sm:aspect-[16/9] sm:rounded-[22px] md:rounded-[28px]">
           {/* Preloaded AVIF/WebP LCP Poster Layer */}
           <Image
             src={data.showreel.poster}
@@ -229,17 +229,17 @@ export default function MotionHero({ data }) {
 
           {!withSound && (
             <>
-              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-black/20" />
+              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/15" />
 
-              <div className="absolute inset-x-5 bottom-5 flex flex-wrap items-end justify-between gap-4 md:inset-x-8 md:bottom-8">
-                <div>
-                  <p className="font-display text-[10px] tracking-[0.24em] text-accent uppercase md:text-xs">
+              <div className="absolute inset-x-3.5 bottom-3.5 flex items-end justify-between gap-3 sm:inset-x-5 sm:bottom-5 md:inset-x-8 md:bottom-8">
+                <div className="min-w-0">
+                  <p className="font-display text-[9px] tracking-[0.2em] text-accent uppercase sm:text-[10px] md:text-xs">
                     {data.showreel.label}
                   </p>
-                  <p className="mt-1 font-display text-base tracking-[-0.02em] text-paper md:text-2xl">
+                  <p className="mt-0.5 line-clamp-1 font-display text-xs tracking-[-0.02em] text-paper sm:mt-1 sm:line-clamp-none sm:text-base md:text-2xl">
                     {data.showreel.title}
                   </p>
-                  <p className="mt-1 hidden text-sm text-paper/70 sm:block">
+                  <p className="mt-1 hidden text-sm text-paper/70 md:block">
                     {data.showreel.meta}
                   </p>
                 </div>
@@ -248,11 +248,11 @@ export default function MotionHero({ data }) {
                   type="button"
                   onClick={handleEnableSound}
                   aria-label="Play featured showreel with sound"
-                  className="inline-flex items-center gap-3 rounded-full bg-paper/95 px-5 py-3 font-display text-[11px] tracking-[0.14em] text-ink uppercase shadow-xl transition-transform duration-300 hover:scale-[1.03] hover:bg-accent"
+                  className="inline-flex min-h-[40px] shrink-0 items-center gap-2 rounded-full bg-paper/95 px-3.5 py-2 font-display text-[10px] tracking-[0.12em] text-ink uppercase shadow-xl transition-transform duration-300 hover:scale-[1.03] hover:bg-accent sm:min-h-[44px] sm:gap-3 sm:px-5 sm:py-3 sm:text-[11px] sm:tracking-[0.14em]"
                 >
                   <svg
                     viewBox="0 0 24 24"
-                    className="h-4 w-4 fill-current"
+                    className="h-3.5 w-3.5 fill-current sm:h-4 sm:w-4"
                     aria-hidden="true"
                   >
                     <path d="M8 5v14l11-7z" />
@@ -265,22 +265,22 @@ export default function MotionHero({ data }) {
         </div>
 
         {/* Subtle 01 / 02 / 03 Priority Strip */}
-        <div className="mt-6 grid grid-cols-1 gap-4 border-b border-white/10 pb-6 sm:grid-cols-3">
+        <div className="mt-5 grid grid-cols-1 gap-3 border-b border-white/10 pb-5 sm:mt-6 sm:grid-cols-3 sm:gap-4 sm:pb-6">
           {data.priorities.map((item) => (
             <Link
               key={item.index}
               href={item.href}
-              className="group flex items-center justify-between gap-3 py-1 transition-colors hover:text-accent"
+              className="group flex min-h-[40px] min-w-0 items-center justify-between gap-3 py-1 transition-colors hover:text-accent"
             >
-              <div className="flex items-baseline gap-3">
-                <span className="font-display text-xs text-accent">{item.index}</span>
-                <span className="font-display text-xs tracking-[0.06em] text-paper/90 group-hover:text-accent md:text-sm">
+              <div className="flex min-w-0 items-baseline gap-2.5 sm:gap-3">
+                <span className="shrink-0 font-display text-xs text-accent">{item.index}</span>
+                <span className="font-display text-xs tracking-[0.04em] text-paper/90 group-hover:text-accent md:text-sm">
                   {item.label}
                 </span>
               </div>
               <span
                 aria-hidden="true"
-                className="text-sm text-muted transition-transform duration-300 group-hover:translate-x-1 group-hover:text-accent"
+                className="shrink-0 text-sm text-muted transition-transform duration-300 group-hover:translate-x-1 group-hover:text-accent"
               >
                 →
               </span>
