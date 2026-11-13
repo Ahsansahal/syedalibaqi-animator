@@ -17,10 +17,10 @@ const display = Unbounded({
 
 export const metadata = {
   title: {
-    default: `${site.name} | Motion Designer & Creative Developer`,
+    default: `${site.name} | Visual Artist, Motion Designer & Web Developer`,
     template: `%s | ${site.name}`,
   },
-  description: `${site.name} — Motion Designer & Creative Developer specializing in GSAP animations, interactive web experiences, UI/UX website design, and WordPress, Shopify, React.js, Next.js & Laravel development.`,
+  description: `${site.name} — Multidisciplinary Visual Artist, Motion Designer, Website Designer & Full-Stack Developer in London specializing in visual storytelling, brand campaigns, GSAP animations, UI/UX website design, and WordPress, Shopify, React.js, Next.js & Laravel development.`,
 };
 
 export default function RootLayout({ children }) {

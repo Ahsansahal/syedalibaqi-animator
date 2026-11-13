@@ -1,17 +1,18 @@
 /**
  * Central content & profile configuration for Syed Ali Abdul Baqi.
  *
- * Priority hierarchy:
- * 01 — Motion Design & Animation (Primary Focus)
- * 02 — Website Design & UI/UX
- * 03 — Website Development & Full-Stack Engineering
+ * Positioning:
+ * Multidisciplinary Visual Artist, Motion Designer, Website Designer & Full-Stack Developer
+ * 01 — Visual Art, Motion Design & Animation (Primary Focus)
+ * 02 — Website Design, Storefront UI & UI/UX Systems
+ * 03 — Website Development (WordPress, Shopify, React.js, Next.js, Laravel)
  */
 
 export const site = {
   name: "Syed Ali Abdul Baqi",
-  role: "Motion Designer & Creative Developer",
-  secondaryRole: "Motion Designer · Website Designer · Full-Stack Developer",
-  location: "United Kingdom",
+  role: "Visual Artist, Motion Designer & Web Developer",
+  secondaryRole: "Visual Artist · Motion Designer · Website Designer & Developer",
+  location: "London, United Kingdom",
   email: "Syed_ali_baqi@hotmail.com",
   phones: [
     {
@@ -31,7 +32,8 @@ export const navigation = [
     href: "/projects",
     children: [
       { label: "All Work", href: "/projects" },
-      { label: "Motion Design & Animation", href: "/projects?category=motion-animation" },
+      { label: "Visual Art & Branding", href: "/projects?category=visual-art" },
+      { label: "Motion & Animation", href: "/projects?category=motion-animation" },
       { label: "Website Design", href: "/projects?category=website-design" },
       { label: "WordPress", href: "/projects?category=wordpress" },
       { label: "Shopify", href: "/projects?category=shopify" },
@@ -48,74 +50,79 @@ export const navigation = [
 ];
 
 export const marquees = [
-  { text: "Motion Design · GSAP · ScrollTrigger", direction: "rtl" },
-  { text: "Interactive Animations · Showreels · Micro-interactions", direction: "ltr" },
-  { text: "Website Design · UI/UX · Visual Systems", direction: "rtl" },
+  { text: "Visual Artist · Motion Design · Art Direction · Cinematography", direction: "rtl" },
+  { text: "Brand Campaigns · Packaging · Digital OOH · Visual Storytelling", direction: "ltr" },
+  { text: "Website Design · UI/UX Systems · GSAP & ScrollTrigger", direction: "rtl" },
   { text: "WordPress · Shopify · React.js · Next.js · Laravel", direction: "ltr" },
 ];
 
 export const home = {
-  eyebrow: "Syed Ali Abdul Baqi",
-  roleTitle: "Motion Designer & Creative Developer",
-  heroLines: ["MOTION DESIGNER", "& CREATIVE", "DEVELOPER"],
+  eyebrow: "London, United Kingdom · 8+ Years Experience",
+  subtitleTag: "Visual Artist · Motion Designer · Website Designer & Developer",
+  roleTitle: "Visual Artist, Motion Designer & Web Developer",
+  heroLines: ["SYED ALI BAQI,", "VISUAL ARTIST", "& WEB DEVELOPER"],
   intro:
-    "I create visually engaging digital experiences through advanced motion design, GSAP animations, interactive web experiences, and modern website design and development.",
-  primaryCta: { label: "Explore Work", href: "/projects" },
+    "Multidisciplinary visual artist, motion designer, website UI/UX designer, and full-stack developer — merging visual storytelling, brand campaigns, and GSAP motion with custom WordPress, Shopify, React.js, Next.js & Laravel websites.",
+  artistStatement: [
+    "A former dancer turned visual artist and graphic designer with eight years of experience, I translate the foundations of movement into visual design. With a background in photography, animation, and cinematography, I take a multidisciplinary approach to storytelling merging my passion for performance with the power of design, motion graphics, and modern web creation.",
+    "Projects span industries including food and beverage, sports nutrition, health and wellness, healthcare, luxury retail, real estate, tourism, and (DEI) recruitment. With creative campaigns, websites, and branded assets reaching communities across international markets including Pakistan, the United Kingdom, Spain, Italy, France, Portugal (Lisbon), Greece, and the US (Miami).",
+  ],
+  primaryCta: { label: "Explore Portfolio", href: "#portfolio" },
   secondaryCta: { label: "Let's Talk", href: "/contact" },
   priorities: [
-    { index: "01", label: "Motion Design & GSAP", href: "/projects?category=motion-animation" },
-    { index: "02", label: "Website Design & UI/UX", href: "/projects?category=website-design" },
-    { index: "03", label: "Full-Stack Web Engineering", href: "#development-portfolio" },
+    { index: "01", label: "Visual Art, Branding & Motion", href: "#portfolio" },
+    { index: "02", label: "Website Design & UI/UX Systems", href: "/projects?category=website-design" },
+    { index: "03", label: "WordPress · Shopify · React · Next.js · Laravel", href: "#development-portfolio" },
   ],
   showreel: {
     label: "Featured Showreel",
     src: "/videos/2520e1_2630dd87512f4167b86fc56a0a9fca2c.mp4",
     poster: "/images/2520e1_2630dd87512f4167b86fc56a0a9fca2cf003.jpg",
-    title: "Fabulatte — Motion & Creative Showreel",
-    meta: "Kinetic Typography · Transitions · Brand Motion",
+    title: "Visual Art, Motion & Creative Direction Showreel",
+    meta: "Visual Storytelling · Kinetic Typography · Brand Motion · Digital Craft",
   },
 };
 
 export const skillsHierarchy = {
   motion: {
     priority: "01",
-    eyebrow: "Primary Focus",
-    title: "Motion Design & Animation",
+    eyebrow: "Primary Identity",
+    title: "Visual Art, Motion Design & Animation",
     tagline:
-      "Choreographed timelines, scroll-driven storytelling, tactile micro-interactions, and high-energy video reels.",
+      "Translating the foundations of movement, photography, and cinematography into bold visual design, brand campaigns, packaging, OOH, and choreographed GSAP motion.",
     skills: [
-      "Motion Design",
-      "GSAP",
-      "ScrollTrigger",
-      "Scroll-Based Animations",
-      "Interactive Animations",
-      "Website Animations",
-      "Micro-interactions",
-      "Motion Graphics",
+      "Visual Art & Art Direction",
+      "Motion Design & Animation",
+      "GSAP & ScrollTrigger",
+      "Brand Identity & Packaging",
+      "Campaigns & Digital OOH",
+      "Photography & Cinematography",
+      "Interactive Web Animations",
+      "Kinetic Typography",
       "Creative Transitions",
       "Video & Showreels",
     ],
     previewVideo: {
       src: "/videos/2520e1_894e994732e24e81ae31dcc9d9853a37.mp4",
       poster: "/images/2520e1_894e994732e24e81ae31dcc9d9853a37f003.jpg",
-      caption: "Kinetic Typography & Motion Rhythm",
+      caption: "Kinetic Typography, Visual Rhythm & Direction",
     },
   },
   webDesign: {
     priority: "02",
-    eyebrow: "Visual Craft & Systems",
+    eyebrow: "Digital Craft & Systems",
     title: "Website Design & UI/UX",
     tagline:
-      "Editorial layouts, structured typography and color tokens, and conversion-focused interfaces built around clarity.",
+      "Editorial landing pages, D2C e-commerce storefronts, structured typography and color token systems, and conversion-focused responsive layouts.",
     skills: [
       "Website Design",
       "UI/UX Design",
       "Landing Page Design",
-      "Responsive Design",
-      "Interactive UI",
-      "Wireframing",
-      "Visual Systems",
-      "Typography & Layout",
+      "E-Commerce Storefront UI",
+      "Responsive Website Layouts",
+      "Interactive UI Concepts",
+      "Visual Design Systems",
+      "Typography & Color Systems",
     ],
     previews: [
       {
@@ -135,9 +142,9 @@ export const skillsHierarchy = {
   development: {
     priority: "03",
     eyebrow: "Platforms & Engineering",
-    title: "Website Development",
+    title: "Website Development & Full-Stack",
     tagline:
-      "Clean, responsive builds across leading CMS platforms, modern React frameworks, and full-stack PHP/Laravel.",
+      "Fast, production-grade websites and custom web applications built across leading CMS platforms, React/Next.js frameworks, and Laravel.",
     groups: [
       {
         label: "CMS & E-Commerce",
@@ -178,43 +185,43 @@ export const skillsHierarchy = {
 export const workflow = [
   {
     step: "01",
-    title: "Direction & Storyboard",
-    detail: "Defining motion rhythm, visual narrative, and clear interactive goals.",
+    title: "Visual Direction & Story",
+    detail: "Merging photography, cinematography, and brand narrative into a cohesive visual direction.",
   },
   {
     step: "02",
-    title: "UI/UX & Visual Systems",
-    detail: "Designing typography scales, color tokens, and responsive screen layouts.",
+    title: "Campaigns & UI/UX Systems",
+    detail: "Crafting brand touchpoints, packaging, OOH, typography scales, and responsive web layouts.",
   },
   {
     step: "03",
     title: "Motion & GSAP Craft",
-    detail: "Building scroll-triggered animations, smooth transitions, and video reels.",
+    detail: "Animating hero films, social reels, kinetic type, and scroll-triggered web interactions.",
   },
   {
     step: "04",
-    title: "Full-Stack Launch",
-    detail: "Shipping fast production builds in Next.js, React, WordPress, Shopify, or Laravel.",
+    title: "Full-Stack Web Launch",
+    detail: "Engineering fast production sites in WordPress, Shopify, React.js, Next.js, or Laravel.",
   },
 ];
 
 export const work = {
-  title: ["Motion Design", "& Animation"],
+  title: ["Motion Design", "& Visual Reels"],
   intro:
-    "Showreels, hero campaign films, kinetic typography, and looping motion visuals crafted for global brands.",
+    "Showreels, hero campaign films, kinetic typography, and looping motion visuals crafted across international markets.",
 };
 
 export const caseStudy = {
   headerImage: "/images/2520e1_a7dbf2f3534b41738be94fc6c3b5b5cd_mv2.png",
   title: "Case Study: EVO ICL",
-  subtitle: "Reframing Vision Correction Through Motion & Inclusive Storytelling",
+  subtitle: "Reframing Vision Correction Through Visual Art, Motion & Inclusive Storytelling",
   intro: [
     "EVO ICL is a globally recognised implantable collamer lens enabling people to live free from glasses or contact lenses. While known for clinical excellence, athlete-only campaigns had narrowed perception toward an elite niche.",
-    "This integrated motion and visual campaign broadened appeal across Fearless, Creator, and Timeless lifestyle audiences.",
+    "This integrated visual and motion campaign broadened appeal across Fearless, Creator, and Timeless lifestyle audiences.",
   ],
   heroFilm: {
     heading: 'Hero Film: "What\'s Your Superpower?"',
-    body: 'A flagship hero film unifying lifestyle storytelling around everyday confidence, creative freedom, and clarity — showcased across digital channels and live international events.',
+    body: "A flagship hero film unifying lifestyle storytelling around everyday confidence, creative freedom, and clarity — showcased across digital channels and live international events.",
     video: {
       src: "/videos/2520e1_7a25770b0b454a53a033770487dbc8ac.mp4",
       poster: "/images/2520e1_7a25770b0b454a53a033770487dbc8acf002.jpg",
@@ -232,17 +239,17 @@ export const caseStudy = {
 };
 
 export const projects = {
-  headerVideo: "/videos/2520e1_2630dd87512f4167b86fc56a0a9fca2c.mp4",
-  headerImage: "/images/2520e1_2630dd87512f4167b86fc56a0a9fca2cf003.jpg",
-  title: "Selected Work",
+  headerVideo: "/videos/2520e1_496ea031ef16481f845a2511d960b811.mp4",
+  headerImage: "/images/2520e1_496ea031ef16481f845a2511d960b811f003.jpg",
+  title: "Selected Works",
   intro:
-    "Motion design and animation first — alongside website UI/UX systems and dedicated WordPress, Shopify, React.js, Next.js, and Laravel work.",
+    "40+ curated works spanning visual art, brand identity, packaging, OOH campaigns, motion showreels, UI/UX website design, and WordPress, Shopify, React.js, Next.js & Laravel builds.",
 };
 
 export const generativeAI = {
-  title: ["AI-Enhanced", "Motion & Visuals"],
+  title: ["AI-Enhanced", "Visuals & Motion"],
   intro: [
-    "Visual and motion studies combining generative workflows with compositing, retouching, and Finishing in Photoshop and After Effects.",
+    "Visual art and motion studies combining generative workflows with compositing, retouching, and finishing in Photoshop and After Effects.",
   ],
 };
 
@@ -270,25 +277,48 @@ export const clients = {
 };
 
 export const about = {
-  eyebrow: "Syed Ali Abdul Baqi",
-  headline: "Motion Designer & Creative Developer.",
+  eyebrow: "Syed Ali Abdul Baqi · Visual Artist & Web Creator",
+  headline: "Translating Movement into Visual Art, Motion & Modern Web.",
   bio: [
-    "I specialize in motion design, GSAP and ScrollTrigger animations, interactive web experiences, and visual storytelling — bringing energy, rhythm, and clarity to digital products.",
-    "Alongside motion, I design responsive website interfaces and build production web platforms across WordPress, Shopify, React.js, Next.js, and Laravel.",
+    "A former dancer turned visual artist and graphic designer with eight years of experience, I translate the foundations of movement into visual design. With a background in photography, animation, and cinematography, I take a multidisciplinary approach to storytelling — merging my passion for performance with the power of design and motion graphics.",
+    "Projects span industries including food and beverage, sports nutrition, health and wellness, healthcare, luxury retail, real estate, tourism, and (DEI) recruitment. With creative campaigns and branded assets reaching communities across international markets including Pakistan, the United Kingdom, Spain, Italy, France, Portugal (Lisbon), Greece, and the US (Miami).",
+    "Alongside visual direction and motion graphics, I design conversion-focused website UI/UX systems and engineer custom web platforms across WordPress, Shopify, React.js, Next.js, and Laravel.",
+  ],
+  industries: [
+    "Food & Beverage",
+    "Sports Nutrition",
+    "Health & Wellness",
+    "Healthcare",
+    "Luxury & Retail",
+    "Real Estate",
+    "Tourism",
+    "DEI Recruitment",
+  ],
+  markets: [
+    "United Kingdom (London)",
+    "Pakistan",
+    "Spain",
+    "Italy",
+    "France",
+    "Portugal (Lisbon)",
+    "Greece",
+    "United States (Miami)",
   ],
   tools: [
     "After Effects",
-    "GSAP & ScrollTrigger",
-    "Premiere Pro",
-    "Figma",
     "Photoshop & Illustrator",
-    "Next.js & React.js",
+    "Premiere Pro",
+    "Photography & Cinematography",
+    "Figma UI/UX",
+    "GSAP & ScrollTrigger",
     "WordPress & Shopify",
+    "React.js & Next.js",
     "Laravel & Tailwind CSS",
   ],
-  quote: '"Motion gives digital design its pulse — turning static screens into experiences people remember."',
+  quote:
+    '"From performance to pixels — movement is the foundation that turns visual art, motion, and digital design into stories people feel."',
   author: "— Syed Ali Abdul Baqi",
-  reelHeading: "Featured Showreel",
+  reelHeading: "Featured Visual & Motion Showreel",
   storyVideo: {
     src: "/videos/2520e1_2630dd87512f4167b86fc56a0a9fca2c.mp4",
     poster: "/images/2520e1_2630dd87512f4167b86fc56a0a9fca2cf003.jpg",
@@ -297,8 +327,8 @@ export const about = {
 
 export const contact = {
   heading: "LET'S WORK TOGETHER",
-  taglineTop: "Have a motion, website design,",
-  taglineBottom: "or full-stack build in mind?",
+  taglineTop: "Need a visual artist, motion designer,",
+  taglineBottom: "or website designer & developer?",
   summary:
-    "Available for motion design, GSAP web animations, UI/UX website design, and custom WordPress, Shopify, React.js, Next.js & Laravel projects.",
+    "Available for visual art direction, brand & OOH campaigns, motion design, UI/UX website design, and custom WordPress, Shopify, React.js, Next.js & Laravel builds.",
 };

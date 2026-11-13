@@ -7,7 +7,7 @@ import { CvButton } from "@/components/ui";
 import { about, marquees, site, skillsHierarchy, workflow } from "@/data/site";
 
 export const metadata = {
-  title: "About | Motion Designer & Creative Developer",
+  title: "About | Visual Artist, Motion Designer & Web Developer",
 };
 
 export default function AboutPage() {
@@ -15,16 +15,12 @@ export default function AboutPage() {
     <>
       {/* Editorial Profile Hero */}
       <section className="mx-auto max-w-[1440px] px-6 pt-10 md:px-12">
-        <Reveal className="font-display text-xs tracking-[0.26em] text-accent uppercase">
+        <p className="font-display text-xs tracking-[0.26em] text-accent uppercase">
           {about.eyebrow}
-        </Reveal>
-        <Reveal
-          as="h1"
-          delay={70}
-          className="mt-4 max-w-[1040px] font-display text-[clamp(2.2rem,5.8vw,78px)] leading-[0.96] tracking-[-0.04em]"
-        >
+        </p>
+        <h1 className="mt-4 max-w-[1080px] font-display text-[clamp(2.2rem,5.6vw,76px)] leading-[0.96] tracking-[-0.04em]">
           {about.headline}
-        </Reveal>
+        </h1>
 
         <div className="mt-10 grid grid-cols-1 gap-10 border-t border-white/12 pt-10 lg:grid-cols-12">
           <Reveal
@@ -35,15 +31,54 @@ export default function AboutPage() {
               <p key={idx}>{paragraph}</p>
             ))}
 
-            <div className="flex flex-wrap gap-2 pt-2">
-              {about.tools.map((tool) => (
-                <span
-                  key={tool}
-                  className="rounded-full bg-white/[0.04] px-3.5 py-1.5 text-xs text-paper/85 ring-1 ring-white/10"
-                >
-                  {tool}
-                </span>
-              ))}
+            <div className="grid grid-cols-1 gap-6 border-t border-white/10 pt-6 sm:grid-cols-2">
+              <div>
+                <p className="font-display text-xs tracking-[0.2em] text-accent uppercase">
+                  Industries
+                </p>
+                <div className="mt-3 flex flex-wrap gap-2">
+                  {about.industries.map((ind) => (
+                    <span
+                      key={ind}
+                      className="rounded-full bg-white/[0.04] px-3.5 py-1.5 text-xs text-paper/85 ring-1 ring-white/10"
+                    >
+                      {ind}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              <div>
+                <p className="font-display text-xs tracking-[0.2em] text-accent uppercase">
+                  International Markets
+                </p>
+                <div className="mt-3 flex flex-wrap gap-2">
+                  {about.markets.map((mkt) => (
+                    <span
+                      key={mkt}
+                      className="rounded-full bg-white/[0.04] px-3.5 py-1.5 text-xs text-paper/85 ring-1 ring-white/10"
+                    >
+                      {mkt}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            <div className="border-t border-white/10 pt-6">
+              <p className="font-display text-xs tracking-[0.2em] text-accent uppercase">
+                Tools, Platforms &amp; Stack
+              </p>
+              <div className="mt-3 flex flex-wrap gap-2">
+                {about.tools.map((tool) => (
+                  <span
+                    key={tool}
+                    className="rounded-full bg-white/[0.04] px-3.5 py-1.5 text-xs text-paper/85 ring-1 ring-white/10"
+                  >
+                    {tool}
+                  </span>
+                ))}
+              </div>
             </div>
           </Reveal>
 
@@ -55,9 +90,10 @@ export default function AboutPage() {
               <p className="font-display text-xs tracking-[0.2em] text-accent uppercase">
                 Direct Contact
               </p>
+              <p className="mt-2 text-sm text-paper/80">{site.location}</p>
               <a
                 href={`mailto:${site.email}`}
-                className="mt-3 block break-all font-display text-sm text-paper transition-colors hover:text-accent"
+                className="mt-4 block break-all font-display text-sm text-paper transition-colors hover:text-accent"
               >
                 {site.email}
               </a>
@@ -89,7 +125,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Motion-First Skills Hierarchy */}
+      {/* Multidisciplinary Skills Hierarchy */}
       <SkillsShowcase data={skillsHierarchy} />
 
       {/* Workflow */}
@@ -99,7 +135,7 @@ export default function AboutPage() {
             Workflow
           </p>
           <h2 className="mt-3 font-display text-3xl tracking-[-0.03em] md:text-4xl">
-            From Motion Concept to Live Production
+            From Visual Concept to Motion &amp; Live Web Build
           </h2>
         </Reveal>
 

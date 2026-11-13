@@ -2,6 +2,7 @@
 
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 
@@ -11,43 +12,44 @@ export default function MotionHero({ data }) {
   const rootRef = useRef(null);
   const stageRef = useRef(null);
   const videoRef = useRef(null);
+
   const [withSound, setWithSound] = useState(false);
+  const [streamMounted, setStreamMounted] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [inView, setInView] = useState(true);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
       const mm = gsap.matchMedia();
 
       mm.add("(prefers-reduced-motion: no-preference)", () => {
+        // Animate subtle GPU transforms without hiding SSR / LCP elements at opacity: 0
         const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
 
-        tl.fromTo(
-          ".hero-eyebrow",
-          { y: 18, opacity: 0 },
-          { y: 0, opacity: 1, duration: 0.65 }
-        )
+        tl.fromTo(".hero-eyebrow", { y: 12 }, { y: 0, duration: 0.5 })
           .fromTo(
             ".hero-line-inner",
-            { yPercent: 112 },
-            { yPercent: 0, duration: 0.9, stagger: 0.1 },
+            { yPercent: 100 },
+            { yPercent: 0, duration: 0.78, stagger: 0.08 },
             "-=0.35"
           )
           .fromTo(
             ".hero-fade",
-            { y: 24, opacity: 0 },
-            { y: 0, opacity: 1, duration: 0.75, stagger: 0.08 },
+            { y: 16 },
+            { y: 0, duration: 0.65, stagger: 0.06 },
             "-=0.45"
           )
           .fromTo(
             stageRef.current,
-            { y: 36, opacity: 0, scale: 0.96 },
-            { y: 0, opacity: 1, scale: 0.96, duration: 0.9 },
-            "-=0.55"
+            { y: 24, scale: 0.97 },
+            { y: 0, scale: 0.97, duration: 0.75 },
+            "-=0.5"
           );
 
         if (stageRef.current) {
           gsap.fromTo(
             stageRef.current,
-            { scale: 0.96 },
+            { scale: 0.97 },
             {
               scale: 1,
               ease: "none",
@@ -66,33 +68,66 @@ export default function MotionHero({ data }) {
     return () => ctx.revert();
   }, []);
 
+  // Defer mounting the 36.8 MB showreel MP4 until after initial page load completes
+  // so FCP, LCP (priority AVIF poster), fonts, and JS execute with zero video contention.
   useEffect(() => {
-    const el = videoRef.current;
-    if (!el || withSound) return;
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (reduce) return;
 
-    const io = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          el.play().catch(() => {});
-        } else {
-          el.pause();
-        }
-      },
-      { threshold: 0.2 }
-    );
-    io.observe(el);
-    return () => io.disconnect();
-  }, [withSound]);
+    let timerId = null;
+    const activate = () => {
+      timerId = window.setTimeout(() => setStreamMounted(true), 250);
+    };
 
-  const handleEnableSound = () => {
+    if (document.readyState === "complete") {
+      activate();
+    } else {
+      window.addEventListener("load", activate, { once: true });
+    }
+
+    return () => {
+      window.removeEventListener("load", activate);
+      if (timerId) window.clearTimeout(timerId);
+    };
+  }, []);
+
+  // Track showreel stage visibility to pause when scrolled off-screen
+  useEffect(() => {
+    const stageEl = stageRef.current;
+    if (!stageEl) return;
+
+    const io = new IntersectionObserver(
+      ([entry]) => setInView(entry.isIntersecting),
+      { threshold: 0.15 }
+    );
+    io.observe(stageEl);
+    return () => io.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!streamMounted || withSound) return;
     const el = videoRef.current;
     if (!el) return;
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduce) return;
+
+    if (inView) {
+      el.play().catch(() => {});
+    } else {
+      el.pause();
+    }
+  }, [streamMounted, inView, withSound]);
+
+  const handleEnableSound = () => {
     setWithSound(true);
-    el.muted = false;
-    el.currentTime = 0;
-    el.play().catch(() => {});
+    setStreamMounted(true);
+    requestAnimationFrame(() => {
+      const el = videoRef.current;
+      if (!el) return;
+      el.muted = false;
+      el.currentTime = 0;
+      el.play().catch(() => {});
+    });
   };
 
   return (
@@ -113,7 +148,7 @@ export default function MotionHero({ data }) {
           {data.eyebrow}
         </span>
         <span className="text-xs tracking-[0.22em] text-muted uppercase">
-          Motion · Design · Code
+          {data.subtitleTag || "Visual Art · Motion · Web Design & Code"}
         </span>
       </div>
 
@@ -162,18 +197,35 @@ export default function MotionHero({ data }) {
         className="mt-12 scroll-mt-32 md:mt-16"
       >
         <div className="group relative aspect-[16/9] w-full overflow-hidden rounded-[22px] bg-neutral-950 ring-1 ring-white/12 md:rounded-[28px]">
-          <video
-            ref={videoRef}
-            src={data.showreel.src}
-            poster={data.showreel.poster}
-            muted={!withSound}
-            loop={!withSound}
-            controls={withSound}
-            playsInline
-            preload="metadata"
-            aria-label={data.showreel.title}
-            className="block h-full w-full object-cover"
+          {/* Preloaded AVIF/WebP LCP Poster Layer */}
+          <Image
+            src={data.showreel.poster}
+            alt={data.showreel.title}
+            fill
+            priority
+            sizes="(min-width: 1480px) 1344px, 95vw"
+            className={`object-cover transition-opacity duration-500 ${
+              isPlaying ? "opacity-0" : "opacity-100"
+            }`}
           />
+
+          {streamMounted && (
+            <video
+              ref={videoRef}
+              src={data.showreel.src}
+              muted={!withSound}
+              loop={!withSound}
+              controls={withSound}
+              autoPlay
+              playsInline
+              preload="auto"
+              aria-label={data.showreel.title}
+              onPlaying={() => setIsPlaying(true)}
+              className={`absolute inset-0 block h-full w-full object-cover transition-opacity duration-500 ${
+                isPlaying || withSound ? "opacity-100" : "opacity-0"
+              }`}
+            />
+          )}
 
           {!withSound && (
             <>

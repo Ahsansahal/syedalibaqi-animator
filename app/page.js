@@ -1,10 +1,12 @@
 import Link from "next/link";
-import FeaturedMotionSection from "@/components/FeaturedMotionSection";
 import HomePortfolioSections from "@/components/HomePortfolioSections";
 import Marquee from "@/components/Marquee";
 import MotionHero from "@/components/MotionHero";
+import PortfolioExplorer from "@/components/PortfolioExplorer";
+import ProGallery from "@/components/ProGallery";
 import Reveal from "@/components/Reveal";
 import SkillsShowcase from "@/components/SkillsShowcase";
+import galleries from "@/data/galleries";
 import { portfolioCategories, portfolioProjects } from "@/data/portfolio";
 import {
   about,
@@ -21,53 +23,161 @@ export default function HomePage() {
 
   return (
     <>
-      {/* 01. Hero / Introduction + Featured Showreel */}
+      {/* 01. Hero / Visual Artist + Motion + Web Designer & Developer + Showreel */}
       <MotionHero data={home} />
 
-      {/* 02. Featured Motion Work */}
-      <FeaturedMotionSection projects={portfolioProjects} />
+      {/* 02. Signature Visual Artist & Web Creator Statement (Directly Below Hero) */}
+      <section
+        id="artist-statement"
+        className="mx-auto mt-20 max-w-[1160px] px-6 text-center md:mt-28 md:px-12"
+      >
+        <Reveal className="space-y-8 font-display text-[clamp(1.05rem,1.9vw,24px)] leading-[1.65] font-normal tracking-[-0.015em] text-paper/95">
+          {home.artistStatement.map((para, idx) => (
+            <p key={idx}>{para}</p>
+          ))}
+        </Reveal>
 
-      {/* 03. Skills & Expertise — Motion First */}
-      <SkillsShowcase data={skillsHierarchy} />
+        <Reveal delay={100} className="mt-8 flex flex-wrap items-center justify-center gap-2.5">
+          {about.markets.map((mkt) => (
+            <span
+              key={mkt}
+              className="rounded-full bg-white/[0.04] px-3.5 py-1.5 text-xs text-accent/95 ring-1 ring-white/12"
+            >
+              {mkt}
+            </span>
+          ))}
+        </Reveal>
+      </section>
 
-      {/* 04. Website Design Portfolio + 05. Development Portfolio */}
+      {/* 03. Full 41-Work Portfolio Showcase Directly on the Home Page */}
+      <section
+        id="portfolio"
+        className="mx-auto mt-24 max-w-[1440px] scroll-mt-28 px-6 md:mt-32 md:px-12"
+      >
+        <div className="mb-10 flex flex-col justify-between gap-6 border-b border-white/12 pb-8 md:flex-row md:items-end">
+          <div>
+            <p className="font-display text-xs tracking-[0.26em] text-accent uppercase">
+              Selected Portfolio · {portfolioProjects.length} Curated Works
+            </p>
+            <h2 className="mt-3 font-display text-[clamp(2rem,4.6vw,60px)] leading-[0.96] tracking-[-0.04em]">
+              Visual Art, Motion, Web Design &amp; Builds
+            </h2>
+          </div>
+
+          <Link
+            href="/projects"
+            className="inline-flex items-center gap-2 font-display text-xs tracking-[0.16em] text-paper/85 uppercase transition-colors hover:text-accent"
+          >
+            <span>Dedicated Portfolio Page</span>
+            <span aria-hidden="true">↗</span>
+          </Link>
+        </div>
+
+        <PortfolioExplorer
+          categories={portfolioCategories}
+          projects={portfolioProjects}
+        />
+      </section>
+
+      {/* 03. Visual Art, Packaging, OOH & Campaign Glimpse Wall */}
+      <section
+        id="visual-wall"
+        className="mx-auto mt-28 max-w-[1440px] scroll-mt-28 px-6 md:mt-36 md:px-12"
+      >
+        <div className="mb-12 flex flex-col justify-between gap-6 border-b border-white/12 pb-8 md:flex-row md:items-end">
+          <div>
+            <p className="font-display text-xs tracking-[0.26em] text-accent uppercase">
+              Visual Artist Gallery · Brand, OOH &amp; Campaign Craft
+            </p>
+            <h2 className="mt-3 font-display text-[clamp(1.9rem,4.2vw,54px)] leading-[0.98] tracking-[-0.04em]">
+              Selected Visuals &amp; Brand Touchpoints
+            </h2>
+          </div>
+
+          <Link
+            href="/projects?category=visual-art"
+            className="inline-flex items-center gap-2 font-display text-xs tracking-[0.16em] text-paper/85 uppercase transition-colors hover:text-accent"
+          >
+            <span>Explore Visual Art &amp; Branding</span>
+            <span aria-hidden="true">→</span>
+          </Link>
+        </div>
+
+        <ProGallery
+          items={galleries.homeGlimpse}
+          layout="masonry"
+          columns={4}
+          gap={20}
+          radius={16}
+          showInfo="hover"
+        />
+      </section>
+
+      {/* 04. Dedicated Website Development by Platform (5 Independent Tabs) */}
       <HomePortfolioSections
         categories={portfolioCategories}
         projects={portfolioProjects}
       />
 
-      {/* 06. About & Workflow */}
+      {/* 05. Multidisciplinary Craft & Skills */}
+      <SkillsShowcase data={skillsHierarchy} />
+
+      {/* 06. Multidisciplinary Story, Industries, International Markets & Workflow */}
       <section
         id="about-workflow"
         className="mx-auto mt-28 max-w-[1440px] scroll-mt-28 px-6 md:mt-36 md:px-12"
       >
         <div className="grid grid-cols-1 gap-12 border-t border-white/12 pt-16 lg:grid-cols-12">
-          <Reveal className="lg:col-span-6">
+          <Reveal className="lg:col-span-7">
             <p className="font-display text-xs tracking-[0.26em] text-accent uppercase">
-              About &amp; Workflow
+              {about.eyebrow}
             </p>
             <h2 className="mt-3 font-display text-[clamp(1.9rem,4vw,50px)] leading-[1.02] tracking-[-0.04em]">
               {about.headline}
             </h2>
-            <div className="mt-5 space-y-4 text-base leading-relaxed text-muted md:text-lg">
+            <div className="mt-6 space-y-4 text-base leading-relaxed text-muted md:text-lg">
               {about.bio.map((p, idx) => (
                 <p key={idx}>{p}</p>
               ))}
             </div>
 
-            <div className="mt-6 flex flex-wrap gap-2">
-              {about.tools.map((tool) => (
-                <span
-                  key={tool}
-                  className="rounded-full bg-white/[0.04] px-3.5 py-1.5 text-xs text-paper/80 ring-1 ring-white/10"
-                >
-                  {tool}
-                </span>
-              ))}
+            {/* Industries & International Markets from Visual Artist Profile */}
+            <div className="mt-8 grid grid-cols-1 gap-6 border-t border-white/10 pt-6 sm:grid-cols-2">
+              <div>
+                <p className="font-display text-[11px] tracking-[0.2em] text-accent uppercase">
+                  Industries
+                </p>
+                <div className="mt-3 flex flex-wrap gap-2">
+                  {about.industries.map((ind) => (
+                    <span
+                      key={ind}
+                      className="rounded-full bg-white/[0.04] px-3 py-1 text-xs text-paper/85 ring-1 ring-white/10"
+                    >
+                      {ind}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              <div>
+                <p className="font-display text-[11px] tracking-[0.2em] text-accent uppercase">
+                  International Markets
+                </p>
+                <div className="mt-3 flex flex-wrap gap-2">
+                  {about.markets.map((mkt) => (
+                    <span
+                      key={mkt}
+                      className="rounded-full bg-white/[0.04] px-3 py-1 text-xs text-paper/85 ring-1 ring-white/10"
+                    >
+                      {mkt}
+                    </span>
+                  ))}
+                </div>
+              </div>
             </div>
           </Reveal>
 
-          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:col-span-6">
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:col-span-5">
             {workflow.map((w, idx) => (
               <Reveal
                 key={w.step}

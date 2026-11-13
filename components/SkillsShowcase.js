@@ -130,12 +130,12 @@ export default function SkillsShowcase({ data }) {
       className="mx-auto mt-28 max-w-[1440px] scroll-mt-28 px-6 md:mt-36 md:px-12"
     >
       {/* Section Header */}
-      <div className="max-w-[780px]">
+      <div className="max-w-[840px]">
         <p className="font-display text-xs tracking-[0.26em] text-accent uppercase">
-          Skills &amp; Craft
+          Multidisciplinary Craft
         </p>
         <h2 className="mt-3 font-display text-[clamp(2rem,4.6vw,58px)] leading-[0.98] tracking-[-0.04em]">
-          Motion First. Design &amp; Code Complete.
+          Visual Artist at Core. Motion, Web Design &amp; Code Complete.
         </h2>
       </div>
 

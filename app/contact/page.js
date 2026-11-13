@@ -20,16 +20,12 @@ function WhatsAppIcon() {
 export default function ContactPage() {
   return (
     <section className="mx-auto max-w-[1240px] px-6 pt-12 pb-24 md:px-12">
-      <Reveal className="font-display text-xs tracking-[0.26em] text-accent uppercase">
-        Motion · Design · Development
-      </Reveal>
-      <Reveal
-        as="h1"
-        delay={60}
-        className="mt-4 font-display text-[clamp(2.3rem,6.5vw,84px)] leading-[0.92] tracking-[-0.045em]"
-      >
+      <p className="font-display text-xs tracking-[0.26em] text-accent uppercase">
+        Visual Artist · Motion · Web Design &amp; Dev
+      </p>
+      <h1 className="mt-4 font-display text-[clamp(2.3rem,6.5vw,84px)] leading-[0.92] tracking-[-0.045em]">
         {contact.heading}
-      </Reveal>
+      </h1>
 
       <div className="mt-14 grid grid-cols-1 gap-10 border-t border-white/12 pt-12 lg:grid-cols-12">
         <div className="lg:col-span-7">

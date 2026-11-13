@@ -6,28 +6,13 @@ import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
 import ProjectModal from "./ProjectModal";
 
-const WEB_FEATURED_IDS = [
-  { id: "fabulatte-digital-landing", col: "lg:col-span-7", aspect: "16 / 10" },
-  { id: "rezilo-digital-product-system", col: "lg:col-span-5", aspect: "4 / 3.35" },
-  { id: "desi-chai-london-system", col: "lg:col-span-6", aspect: "16 / 9" },
-  { id: "tratech-digital-system", col: "lg:col-span-6", aspect: "16 / 9" },
-];
-
 const DEV_TAB_IDS = ["wordpress", "shopify", "reactjs", "nextjs", "laravel"];
 
 export default function HomePortfolioSections({ categories, projects }) {
   const [selectedProject, setSelectedProject] = useState(null);
-  const [activeDevTab, setActiveDevTab] = useState("nextjs");
+  const [activeDevTab, setActiveDevTab] = useState("wordpress");
   const devPanelRef = useRef(null);
-
-  const webFeatured = useMemo(
-    () =>
-      WEB_FEATURED_IDS.map((slot) => {
-        const p = projects.find((item) => item.id === slot.id);
-        return p ? { ...p, slotCol: slot.col, slotAspect: slot.aspect } : null;
-      }).filter(Boolean),
-    [projects]
-  );
+  const mountedRef = useRef(false);
 
   const devTabs = useMemo(
     () =>
@@ -46,6 +31,10 @@ export default function HomePortfolioSections({ categories, projects }) {
   );
 
   useEffect(() => {
+    if (!mountedRef.current) {
+      mountedRef.current = true;
+      return;
+    }
     const el = devPanelRef.current;
     if (!el) return;
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -59,88 +48,6 @@ export default function HomePortfolioSections({ categories, projects }) {
 
   return (
     <>
-      {/* =================================================================== */}
-      {/* 04. WEBSITE DESIGN PORTFOLIO                                        */}
-      {/* =================================================================== */}
-      <section
-        id="website-design-portfolio"
-        className="mx-auto mt-28 max-w-[1440px] scroll-mt-28 px-6 md:mt-36 md:px-12"
-      >
-        <div className="flex flex-col justify-between gap-6 border-b border-white/12 pb-8 md:flex-row md:items-end">
-          <div>
-            <p className="font-display text-xs tracking-[0.26em] text-accent uppercase">
-              02 · Website Design &amp; UI/UX
-            </p>
-            <h2 className="mt-3 font-display text-[clamp(1.9rem,4.2vw,54px)] leading-[0.98] tracking-[-0.04em]">
-              Website Design &amp; Visual Systems
-            </h2>
-          </div>
-
-          <Link
-            href="/projects?category=website-design"
-            className="inline-flex items-center gap-2 font-display text-xs tracking-[0.16em] text-paper/85 uppercase transition-colors hover:text-accent"
-          >
-            <span>Explore Website Design</span>
-            <span aria-hidden="true">→</span>
-          </Link>
-        </div>
-
-        <div className="mt-12 grid grid-cols-1 gap-y-12 md:gap-x-8 lg:grid-cols-12">
-          {webFeatured.map((project) => (
-            <article
-              key={project.id}
-              className={`group flex flex-col ${project.slotCol}`}
-            >
-              <button
-                type="button"
-                onClick={() => setSelectedProject(project)}
-                aria-label={`Inspect ${project.title}`}
-                className="relative block w-full overflow-hidden rounded-[20px] bg-neutral-950 text-left ring-1 ring-white/10 focus-visible:outline-2 focus-visible:outline-accent"
-                style={{ aspectRatio: project.slotAspect }}
-              >
-                <Image
-                  src={project.thumbnail}
-                  alt={project.title}
-                  fill
-                  sizes="(min-width: 1024px) 55vw, 100vw"
-                  className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.035]"
-                />
-                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-60 transition-opacity group-hover:opacity-85" />
-              </button>
-
-              <div className="mt-4 flex flex-col justify-between gap-2 sm:flex-row sm:items-baseline">
-                <div>
-                  <h3 className="font-display text-lg tracking-[-0.02em] text-paper transition-colors group-hover:text-accent md:text-xl">
-                    <button
-                      type="button"
-                      onClick={() => setSelectedProject(project)}
-                      className="text-left focus-visible:outline-none"
-                    >
-                      {project.title}
-                    </button>
-                  </h3>
-                  <p className="mt-1 max-w-[540px] text-sm leading-relaxed text-muted md:text-[15px]">
-                    {project.shortSummary}
-                  </p>
-                </div>
-
-                <div className="flex shrink-0 flex-wrap items-center gap-2 text-xs text-paper/60">
-                  {project.tags?.slice(0, 2).map((t, idx) => (
-                    <span key={t}>
-                      {idx > 0 && <span className="mr-2 text-accent">·</span>}
-                      {t}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      {/* =================================================================== */}
-      {/* 05. DEVELOPMENT PORTFOLIO (5 Independent Platform Tabs)             */}
-      {/* =================================================================== */}
       <section
         id="development-portfolio"
         className="mx-auto mt-28 max-w-[1440px] scroll-mt-28 px-6 md:mt-36 md:px-12"
@@ -148,10 +55,10 @@ export default function HomePortfolioSections({ categories, projects }) {
         <div className="flex flex-col justify-between gap-6 border-b border-white/12 pb-8 lg:flex-row lg:items-end">
           <div>
             <p className="font-display text-xs tracking-[0.26em] text-accent uppercase">
-              03 · Website Development
+              Website Engineering · 5 Independent Platforms
             </p>
             <h2 className="mt-3 font-display text-[clamp(1.9rem,4.2vw,54px)] leading-[0.98] tracking-[-0.04em]">
-              Development by Platform
+              Website Development by Platform
             </h2>
           </div>
 
