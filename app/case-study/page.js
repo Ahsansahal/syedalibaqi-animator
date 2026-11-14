@@ -1,22 +1,69 @@
 import Image from "next/image";
+import JsonLd from "@/components/JsonLd";
 import Placeholder from "@/components/Placeholder";
 import ProGallery from "@/components/ProGallery";
 import Reveal from "@/components/Reveal";
 import VideoPlayer from "@/components/VideoPlayer";
 import { PrimaryButton } from "@/components/ui";
 import galleries from "@/data/galleries";
-import { caseStudy as cs } from "@/data/site";
+import { buildPageMetadata, getBreadcrumbSchema } from "@/data/seo";
+import { caseStudy as cs, site } from "@/data/site";
 
-export const metadata = { title: "Case Study" };
+export const metadata = buildPageMetadata({
+  title: "Case Study: EVO ICL — Motion Film & Brand Campaign",
+  description:
+    'Case study of the EVO ICL campaign and "What\'s Your Superpower?" hero motion film directed and produced by Syed Ali Abdul Baqi.',
+  path: "/case-study",
+  image: cs.heroFilm.video.poster,
+  keywords: [
+    "EVO ICL Case Study",
+    "Motion Design Case Study",
+    "Brand Campaign Storytelling",
+    "Syed Ali Abdul Baqi",
+  ],
+  type: "article",
+});
 
 export default function CaseStudyPage() {
+  const articleSchema = {
+    "@context": "https://schema.org",
+    "@type": "CreativeWork",
+    name: cs.title,
+    headline: `${cs.title} — ${cs.subtitle}`,
+    description: cs.intro[0],
+    url: `${site.url}/case-study`,
+    image: `${site.url}${cs.heroFilm.video.poster}`,
+    creator: { "@id": `${site.url}/#person` },
+  };
+
+  const breadcrumbSchema = getBreadcrumbSchema([
+    { name: "Home", path: "/" },
+    { name: "Case Study: EVO ICL", path: "/case-study" },
+  ]);
+
   return (
     <article className="-mt-28">
+      <JsonLd data={articleSchema} />
+      <JsonLd data={breadcrumbSchema} />
+
       {/* Banner image with the title overlaid */}
       <header className="relative h-[298px] w-full overflow-hidden">
-        {cs.headerImage ? <Image src={cs.headerImage} alt="" fill priority sizes="100vw" className="object-cover" /> : <Placeholder label="Header image" />}
+        {cs.headerImage ? (
+          <Image
+            src={cs.headerImage}
+            alt="EVO ICL campaign case study banner"
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover"
+          />
+        ) : (
+          <Placeholder label="Header image" />
+        )}
         <div className="absolute inset-0 bg-black/30" />
-        <h1 className="absolute inset-x-0 top-[150px] px-6 text-center font-display text-3xl md:text-[56px]">{cs.title}</h1>
+        <h1 className="absolute inset-x-0 top-[150px] px-6 text-center font-display text-3xl md:text-[56px]">
+          {cs.title}
+        </h1>
       </header>
 
       <div className="mx-auto max-w-[980px] px-6">
@@ -31,7 +78,13 @@ export default function CaseStudyPage() {
       </div>
 
       <div className="mx-auto mt-16 max-w-[1000px] px-6">
-        <ProGallery items={galleries.caseStudySegments} layout="grid" columns={3} gap={20} ratio="1080 / 1350" />
+        <ProGallery
+          items={galleries.caseStudySegments}
+          layout="grid"
+          columns={3}
+          gap={20}
+          ratio="1080 / 1350"
+        />
       </div>
 
       <div className="mx-auto max-w-[980px] px-6">
@@ -42,20 +95,32 @@ export default function CaseStudyPage() {
       </div>
 
       <Reveal className="mx-auto mt-14 max-w-[1029px] px-4">
-        <VideoPlayer src={cs.heroFilm.video.src} poster={cs.heroFilm.video.poster} title={cs.heroFilm.heading} aspect="1029 / 560" />
+        <VideoPlayer
+          src={cs.heroFilm.video.src}
+          poster={cs.heroFilm.video.poster}
+          title={cs.heroFilm.heading}
+          aspect="1029 / 560"
+        />
       </Reveal>
 
       <Reveal className="mx-auto mt-20 max-w-[755px] px-6 text-center">
-        <p className="text-xl leading-[1.4]">{cs.partnership.heading}</p>
+        <h2 className="font-display text-xl leading-[1.4] md:text-2xl">
+          {cs.partnership.heading}
+        </h2>
       </Reveal>
       <Reveal className="mx-auto mt-16 max-w-[1029px] px-4">
-        <VideoPlayer src={cs.partnership.video.src} poster={cs.partnership.video.poster} title={cs.partnership.heading} aspect="1029 / 560" />
+        <VideoPlayer
+          src={cs.partnership.video.src}
+          poster={cs.partnership.video.poster}
+          title={cs.partnership.heading}
+          aspect="1029 / 560"
+        />
       </Reveal>
       <Reveal className="mx-auto mt-16 max-w-[755px] px-6 text-center">
         <p className="text-xl leading-[1.4]">{cs.partnership.body}</p>
       </Reveal>
 
-      <div className="mt-20 text-center">
+      <div className="mt-20 pb-8 text-center">
         <PrimaryButton href={cs.cta.href}>{cs.cta.label}</PrimaryButton>
       </div>
     </article>

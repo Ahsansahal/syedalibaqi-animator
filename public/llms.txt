@@ -1,0 +1,30 @@
+# Syed Ali Abdul Baqi — Motion Designer & Website Designer-Developer (London, UK)
+
+> I create animations, motion-driven experiences, and custom-designed websites that I develop using modern technologies and platforms.
+
+## Professional Positioning & Specializations
+
+Syed Ali Abdul Baqi is a London-based Visual Artist, Motion Designer, and Custom Website Designer & Developer with 8+ years of multidisciplinary experience. He designs and develops custom websites end to end around business goals and technical requirements — connecting visual website design directly with full-stack website development across modern platforms.
+
+### Priority Hierarchy
+1. **Animation & Motion Design** (Primary Specialization): Showreels, hero campaign films, kinetic typography, stop-motion, social motion spots, and motion-driven digital storytelling.
+2. **Custom Website Design & Development** (Secondary Specialization): Connected visual design and bespoke full-stack website development — custom business websites, creative landing pages, responsive layouts, website redesigns, and custom-coded builds engineered with **React.js**, **Next.js**, and **Laravel**.
+3. **CMS & E-Commerce Website Platforms**: Dedicated platform development across **WordPress** (custom PHP themes, ACF/block CMS, WooCommerce) and **Shopify** (Online Store 2.0, Liquid, D2C storefronts).
+
+## Key Pages & Canonical URLs
+
+- [Homepage](https://syedalibaqi.co.uk/): Overview, showreel, creative glimpse, and structured portfolio.
+- [Animation & Motion Design](https://syedalibaqi.co.uk/work): Primary specialization — motion graphics, campaign films, and showreels.
+- [Custom Website Design & Development](https://syedalibaqi.co.uk/website-design-development): Connected custom website design and website development hub.
+- [Custom Website Design & Custom-Coded Development](https://syedalibaqi.co.uk/website-design-development/custom-website-design): Custom business website design, responsive layouts, and custom website development across React.js, Next.js, and Laravel:
+  - [React.js Custom Website Development](https://syedalibaqi.co.uk/website-design-development/reactjs): Interactive web experiences, motion-driven interfaces, and modular React 19 components.
+  - [Next.js Custom Website Development](https://syedalibaqi.co.uk/website-design-development/nextjs): High-performance App Router websites, Tailwind CSS builds, and technical SEO.
+  - [Laravel Custom Website Development](https://syedalibaqi.co.uk/website-design-development/laravel): Custom business web applications, MySQL schemas, client portals, and REST APIs.
+- [WordPress Website Development](https://syedalibaqi.co.uk/website-design-development/wordpress): Custom PHP themes, ACF/block CMS architectures, corporate websites, and WooCommerce.
+- [Shopify Website Development](https://syedalibaqi.co.uk/website-design-development/shopify): Online Store 2.0 storefronts, bespoke Liquid templates, and D2C retail merchandising.
+- [Projects](https://syedalibaqi.co.uk/projects): Selected brand, motion, and custom website projects.
+- [EVO ICL Case Study](https://syedalibaqi.co.uk/case-study): Flagship motion film and inclusive brand segmentation case study.
+- [Clients](https://syedalibaqi.co.uk/clients): Collaborations including STAAR Surgical, EVO ICL, OCL Vision, GulAhmed, Nando's, Durex, Holland & Barrett, Grenade, and NHS Camden & Islington.
+- [About Ali](https://syedalibaqi.co.uk/about): Story, background, and specialization hierarchy.
+- [Contact](https://syedalibaqi.co.uk/contact): Direct project enquiries (`Syed_ali_baqi@hotmail.com`, `+44 7415 253939`).
+- [Extended AI Reference](https://syedalibaqi.co.uk/llms-full.txt): Full service, capability, and portfolio index for AI search engines.

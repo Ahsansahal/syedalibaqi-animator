@@ -54,6 +54,7 @@ export default function ProGallery({
             src={item.src}
             alt={item.title || item.description || ""}
             fill
+            unoptimized={item.src.endsWith(".gif")}
             sizes={extra.sizes ?? `(min-width: 1024px) ${Math.round(100 / columns)}vw, 100vw`}
             className={`${extra.fit === "contain" ? "object-contain" : "object-cover"} transition-transform duration-700 group-hover:scale-[1.04]`}
           />

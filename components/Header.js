@@ -25,6 +25,9 @@ export default function Header() {
   }, []);
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
   }, [open]);
 
   return (
@@ -97,6 +100,7 @@ export default function Header() {
             <li key={item.label}>
               <Link
                 href={item.href}
+                onClick={() => setOpen(false)}
                 className={`block py-3 font-display text-2xl ${isActive(pathname, item) ? "text-accent" : ""}`}
               >
                 {item.label}
@@ -107,6 +111,7 @@ export default function Header() {
                     <li key={child.href}>
                       <Link
                         href={child.href}
+                        onClick={() => setOpen(false)}
                         className={`block py-2 text-lg ${pathname === child.href ? "text-accent" : "text-muted"}`}
                       >
                         {child.label}

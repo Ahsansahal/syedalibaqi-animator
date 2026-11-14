@@ -583,7 +583,7 @@ const galleries = {
       w: 600,
       h: 600,
       title: "Rezilo",
-      description: "London OOH, Launch UI & Brand System",
+      description: "London OOH, Product Launch Web & Brand System",
     },
     {
       type: "image",
@@ -623,7 +623,7 @@ const galleries = {
       w: 600,
       h: 600,
       title: "G'Natural",
-      description: "Botanical Skincare & Storefront UI",
+      description: "Botanical Skincare & Online Storefront Design",
     },
     {
       type: "image",

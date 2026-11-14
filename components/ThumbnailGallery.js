@@ -16,9 +16,18 @@ export default function ThumbnailGallery({ items, ratio = "16 / 9", className = 
   const stripRef = useRef(null);
   const step = useCallback((d) => setIndex((i) => (i + d + items.length) % items.length), [items.length]);
 
+  const mountedRef = useRef(false);
   useEffect(() => {
-    const thumb = stripRef.current?.children[index];
-    thumb?.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" });
+    if (!mountedRef.current) {
+      mountedRef.current = true;
+      return;
+    }
+    const strip = stripRef.current;
+    const thumb = strip?.children[index];
+    if (strip && thumb) {
+      const targetLeft = thumb.offsetLeft - strip.clientWidth / 2 + thumb.clientWidth / 2;
+      strip.scrollTo({ left: Math.max(0, targetLeft), behavior: "smooth" });
+    }
   }, [index]);
 
   const item = items[index];

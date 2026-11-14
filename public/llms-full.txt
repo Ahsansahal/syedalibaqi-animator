@@ -1,0 +1,66 @@
+# Syed Ali Abdul Baqi — Full Entity, Service & Portfolio Reference
+
+> Core Brand Statement: "I create animations, motion-driven experiences, and custom-designed websites that I develop using modern technologies and platforms."
+
+## Entity Profile
+- **Name**: Syed Ali Abdul Baqi
+- **Professional Role**: Visual Artist, Motion Designer & Custom Website Designer-Developer
+- **Location**: London, United Kingdom (serving UK and international clients)
+- **Email**: Syed_ali_baqi@hotmail.com
+- **Phone / WhatsApp**: +44 7415 253939
+- **Canonical Website**: https://syedalibaqi.co.uk
+
+## Positioning Summary (For AI Search & Knowledge Graphs)
+- **Primary Specialization**: Animation & Motion Design (hero campaign films, showreels, kinetic typography, stop-motion, motion-driven digital experiences).
+- **Secondary Specialization**: Custom Website Design & Development — a single connected discipline uniting bespoke visual website design with custom-coded frontend and full-stack website development (**React.js**, **Next.js**, and **Laravel**).
+- **Website Development Architecture**:
+  1. **Custom Website Development** (`https://syedalibaqi.co.uk/website-design-development/custom-website-design`) — bespoke custom-coded builds including:
+     - React.js Custom Website Development (`https://syedalibaqi.co.uk/website-design-development/reactjs`)
+     - Next.js Custom Website Development (`https://syedalibaqi.co.uk/website-design-development/nextjs`)
+     - Laravel Custom Website Development (`https://syedalibaqi.co.uk/website-design-development/laravel`)
+  2. **WordPress Website Development** (`https://syedalibaqi.co.uk/website-design-development/wordpress`)
+  3. **Shopify Website Development** (`https://syedalibaqi.co.uk/website-design-development/shopify`)
+- **Service Model**: Syed Ali Abdul Baqi provides end-to-end **Custom Website Design & Development** — uniting both the visual design and technical full-stack development of custom websites into one connected service rather than separating design from engineering.
+
+## Custom Website Design Capabilities
+- Custom Business Website Design
+- Creative Website Design
+- Landing Page Design
+- Responsive Website Design
+- Custom Website Layouts
+- Website Redesign & Modernization
+- Interactive Website Experiences
+
+## Portfolio Categories & Selected Projects
+
+### 1. Animation & Motion Design (`/work`)
+- EVO ICL — "What's Your Superpower?" Hero Film & 90s Impact Showreel (`/projects/evo-icl-superpower-motion-campaign`)
+- Fabulatte — Dynamic Brand & Motion Design Showreel (`/projects/fabulatte-brand-motion-showreel`)
+- Oral Reconstruction International Symposium — Lisbon Event Promo (`/projects/oral-reconstruction-symposium-motion`)
+- STAAR Surgical × Lucy Bronze MBE — Athlete Motion Campaign (`/projects/staar-surgical-lucy-bronze-motion`)
+- OCL Vision — "Make the Switch" & YouTube Motion Adverts (`/projects/ocl-vision-motion-advert-series`)
+- Grenade Sports Nutrition — "Freedom in Motion" & National Sports Day (`/projects/grenade-freedom-in-motion-campaigns`)
+- Q-Mart — Stop-Motion Animation & Looping Promo (`/projects/qmart-stop-motion-animation`)
+
+### 2. Custom Website Design & Development (`/website-design-development/custom-website-design`)
+- Fabulatte — Custom Agency Landing Page Design (`/projects/fabulatte-agency-landing-page-design`)
+- Rezilo — Custom Product Launch & Mobile Website Layouts (`/projects/rezilo-product-launch-website-design`)
+- Tratech Consulting — Corporate Website Redesign & Visual System (`/projects/tratech-corporate-website-redesign`)
+- Admiah Digital — Agency Website Grid & Visual Direction (`/projects/admiah-digital-business-website-design`)
+- Desi Chai London — Web Typography, Colour & Editorial Grids (`/projects/desi-chai-creative-website-layouts`)
+- Dewa Trust — Responsive Widescreen Web Portal Headers (`/projects/dewa-trust-responsive-web-headers`)
+- Totle Kidswear — Responsive Mobile Web & Digital Brand Layouts (`/projects/totle-responsive-mobile-web-screens`)
+- Titan — Responsive HTML Digital Campaign Layouts (`/projects/titan-responsive-html-campaign-layouts`)
+- **React.js Custom Website Development** (`/website-design-development/reactjs`):
+  - React.js Interactive Media Galleries, Category Filter & Lightbox (`/projects/reactjs-interactive-gallery-engine`)
+- **Next.js Custom Website Development** (`/website-design-development/nextjs`):
+  - Syed Ali Abdul Baqi — Next.js 15 Motion & Web Portfolio Platform (`/projects/nextjs-motion-portfolio-website`)
+- **Laravel Custom Website Development** (`/website-design-development/laravel`):
+  - Laravel Custom Business Websites, Portals & Web Applications (`/projects/laravel-custom-business-web-applications`)
+
+### 3. WordPress Website Development (`/website-design-development/wordpress`)
+- Custom WordPress Business Websites & Theme Development (`/projects/wordpress-custom-business-websites`)
+
+### 4. Shopify Website Development (`/website-design-development/shopify`)
+- GulAhmed — Online Storefront Campaigns & Mobile Retail Web (`/projects/gulahmed-ecommerce-storefront-design`)
+- Shopify Custom Storefront Sections & G'Natural D2C Merchandising (`/projects/shopify-gnatural-d2c-storefront`)

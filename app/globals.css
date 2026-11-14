@@ -1,4 +1,7 @@
 @import "tailwindcss";
+@source "../app";
+@source "../components";
+@source "../data";
 
 /* Design tokens taken from the original Wix theme. */
 @theme inline {
